@@ -1,21 +1,19 @@
 const express = require('express');
-const dotenv = require('dotenv');
+require('dotenv').config({ path: '../.env' });
 const connectDB = require('./config/db');
+
 const authRoutes = require('./routes/auth.routes');
 const menuRoutes = require('./routes/menu.routes');
 const reservationRoutes = require('./routes/reservation.routes');
 const orderRoutes = require('./routes/order.routes');
-
-dotenv.config();
 
 connectDB();
 
 const app = express();
 
 // Middleware
-app.use(express.json()); // To parse JSON requests
+app.use(express.json());
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/reservations', reservationRoutes);
