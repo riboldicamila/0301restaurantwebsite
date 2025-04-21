@@ -1,15 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
-const menuRoutes = require('./routes/menuRoutes');
-const reservationRoutes = require('./routes/reservationRoutes');
-const orderRoutes = require('./routes/orderRoutes');
+const authRoutes = require('./routes/auth.routes');
+const menuRoutes = require('./routes/menu.routes');
+const reservationRoutes = require('./routes/reservation.routes');
+const orderRoutes = require('./routes/order.routes');
 
-// Load environment variables
 dotenv.config();
 
-// Connect to the database
 connectDB();
 
 const app = express();
