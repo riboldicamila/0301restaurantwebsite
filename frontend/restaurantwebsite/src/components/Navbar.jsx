@@ -18,9 +18,8 @@ const Navbar = () => {
 
         <div className="hidden md:flex space-x-6">
           <Link to="/menu" className="hover:text-[#A5D8A6] transition-colors">MENU</Link>
-          <Link to="/specials" className="hover:text-[#A5D8A6] transition-colors">SPECIALS</Link>
-          <Link to="/about" className="hover:text-[#A5D8A6] transition-colors">OUR STORY</Link>
-          <Link to="/recipes" className="hover:text-[#A5D8A6] transition-colors">RECIPES</Link>
+          <Link to="/our-story" className="hover:text-[#A5D8A6] transition-colors">OUR STORY</Link>
+          <Link to="/recipes" className="hover:text-[#A5D8A6] transition-colors">RESERVATIONS</Link>
           <Link to="/contact" className="hover:text-[#A5D8A6] transition-colors">CONTACT</Link>
         </div>
 
