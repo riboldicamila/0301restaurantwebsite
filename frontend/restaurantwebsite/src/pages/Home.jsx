@@ -12,7 +12,6 @@ export default function Home() {
       <BarInfo />
       <Navbar />
 
-      {/* Hero Section */}
       <section className="flex flex-col justify-center px-6 py-24 md:py-32 max-w-5xl mx-auto">
         <div className="mb-16">
           <h1 className="text-5xl md:text-7xl font-light mb-4">
@@ -29,7 +28,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Chef preparing food section */}
       <section className="px-6 py-16 bg-black/40">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -43,7 +41,6 @@ export default function Home() {
             </button>
           </div>
           <div className="relative h-64 md:h-full">
-            {/* Placeholder for generic image */}
             <div className="bg-gray-800 h-full w-full rounded"></div>
           </div>
         </div>
