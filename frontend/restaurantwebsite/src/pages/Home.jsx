@@ -1,15 +1,12 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+
 import Button from '../components/Button';
 import DishCard from '../components/DishCard';
 import BenefitCard from '../components/BenefitCard';
-import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <div className="bg-[#F1FAEE] min-h-screen">
-      <Navbar />
-      
+    <div className="bg-[#F1FAEE] min-h-screen">      
       <div className="bg-[#2D3142] text-[#F1FAEE]">
         <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
@@ -26,9 +23,9 @@ const Home = () => {
           </div>
           
           <div className="md:w-1/2">
-            <div className="rounded-lg overflow-hidden shadow-xl">
+            <div className="rounded-lg overflow-hidden shadow-xl ml-10">
               <img 
-                src="/api/placeholder/600/400" 
+                src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745860375/pexels-photo-175754_exsdk9.jpg" 
                 alt="Thai street food dishes" 
                 className="w-full h-full object-cover"
               />
@@ -115,10 +112,6 @@ const Home = () => {
           <Button>ORDER NOW</Button>
         </div>
       </div>
-
-      <Footer/> 
-      
-
     </div>
   );
 };

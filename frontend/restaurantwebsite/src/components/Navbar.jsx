@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const Navbar = () => {
@@ -16,11 +17,11 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex space-x-6">
-          <a href="#menu" className="hover:text-[#A5D8A6] transition-colors">MENU</a>
-          <a href="#specials" className="hover:text-[#A5D8A6] transition-colors">SPECIALS</a>
-          <a href="#about" className="hover:text-[#A5D8A6] transition-colors">OUR STORY</a>
-          <a href="#recipes" className="hover:text-[#A5D8A6] transition-colors">RECIPES</a>
-          <a href="#contact" className="hover:text-[#A5D8A6] transition-colors">CONTACT</a>
+          <Link to="/menu" className="hover:text-[#A5D8A6] transition-colors">MENU</Link>
+          <Link to="/specials" className="hover:text-[#A5D8A6] transition-colors">SPECIALS</Link>
+          <Link to="/about" className="hover:text-[#A5D8A6] transition-colors">OUR STORY</Link>
+          <Link to="/recipes" className="hover:text-[#A5D8A6] transition-colors">RECIPES</Link>
+          <Link to="/contact" className="hover:text-[#A5D8A6] transition-colors">CONTACT</Link>
         </div>
 
         <div className="hidden md:block">
@@ -43,11 +44,11 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-[#1D2030] px-4 py-2">
           <div className="flex flex-col space-y-3 pb-3">
-            <a href="#menu" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">MENU</a>
-            <a href="#specials" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">SPECIALS</a>
-            <a href="#about" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">OUR STORY</a>
-            <a href="#recipes" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">RECIPES</a>
-            <a href="#contact" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">CONTACT</a>
+            <Link to="/menu" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">MENU</Link>
+            <Link to="/specials" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">SPECIALS</Link>
+            <Link to="/about" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">OUR STORY</Link>
+            <Link to="/recipes" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">RECIPES</Link>
+            <Link to="/contact" className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]">CONTACT</Link>
             <Button fullWidth>ORDER NOW</Button>
           </div>
         </div>
