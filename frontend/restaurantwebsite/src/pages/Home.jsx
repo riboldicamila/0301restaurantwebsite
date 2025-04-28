@@ -1,50 +1,126 @@
 import React from 'react';
-import BarInfo from '../components/BarInfo';
-import { Navbar } from '../components/Navbar';
+import Navbar from '../components/Navbar';
+import Button from '../components/Button';
+import DishCard from '../components/DishCard';
+import BenefitCard from '../components/BenefitCard';
+import Footer from '../components/Footer';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="relative min-h-screen bg-black text-white">
-      <div className="absolute inset-0 bg-black/60 z-0">
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+    <div className="bg-[#F1FAEE] min-h-screen">
+      <Navbar />
+      
+      <div className="bg-[#2D3142] text-[#F1FAEE]">
+        <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 mb-8 md:mb-0">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#E63946]">
+              AUTHENTIC THAI STREET FOOD EXPERIENCE
+            </h1>
+            <p className="text-lg mb-6">
+              Bringing the vibrant flavors and energy of Bangkok's street food scene right to your table.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="primary">ORDER NOW</Button>
+              <Button variant="outline">VIEW MENU</Button>
+            </div>
+          </div>
+          
+          <div className="md:w-1/2">
+            <div className="rounded-lg overflow-hidden shadow-xl">
+              <img 
+                src="/api/placeholder/600/400" 
+                alt="Thai street food dishes" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
       
-      <BarInfo />
-      <Navbar />
-
-      <section className="flex flex-col justify-center px-6 py-24 md:py-32 max-w-5xl mx-auto">
-        <div className="mb-16">
-          <h1 className="text-5xl md:text-7xl font-light mb-4">
-            Welcome to <br />
-            <span className="font-normal">Our Company</span>
-          </h1>
-          <p className="text-lg max-w-lg mb-8 text-gray-300">
-            Delivering excellence in every product we create. Join us as we bring innovative solutions
-            that meet your needs, with a focus on quality and customer satisfaction.
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12 text-[#2D3142]">STREET FOOD FAVORITES</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <DishCard 
+            title="Pad Thai"
+            description="Stir-fried rice noodles with eggs, tofu, bean sprouts, and peanuts in a tangy sauce."
+            rating={4.8}
+            imageUrl="/api/placeholder/400/300"
+          />
+          
+          <DishCard 
+            title="Som Tam (Papaya Salad)"
+            description="Spicy green papaya salad with tomatoes, peanuts, and a zesty lime dressing."
+            rating={4.7}
+            imageUrl="/api/placeholder/400/300"
+          />
+          
+          <DishCard 
+            title="Mango Sticky Rice"
+            description="Sweet sticky rice topped with fresh mango slices and coconut cream."
+            rating={4.9}
+            imageUrl="/api/placeholder/400/300"
+          />
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button variant="secondary">EXPLORE FULL MENU</Button>
+        </div>
+      </div>
+      
+      <div className="bg-[#E5EFE6] py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#2D3142]">THE STREET FOOD EXPERIENCE</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <BenefitCard 
+              title="Bold Flavors"
+              description="Our dishes capture the perfect balance of sweet, sour, salty, and spicy that Thai street food is famous for."
+              icon={
+                <svg className="w-12 h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              }
+            />
+            
+            <BenefitCard 
+              title="Fresh Ingredients"
+              description="We use locally sourced ingredients at peak freshness, just like the street vendors in Thailand."
+              icon={
+                <svg className="w-12 h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm6 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                </svg>
+              }
+            />
+            
+            <BenefitCard 
+              title="Quick & Satisfying"
+              description="Just like the streets of Bangkok, our dishes are prepared quickly but never compromise on flavor."
+              icon={
+                <svg className="w-12 h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              }
+            />
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-[#2D3142] text-[#F1FAEE] py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6 text-[#E63946]">READY FOR A TASTE OF BANGKOK?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Order now for delivery or pickup and experience the authentic flavors of Thai street food from the comfort of your home.
           </p>
-          <button className="bg-transparent hover:bg-white text-white hover:text-black border border-white px-8 py-3 uppercase transition-colors">
-            Learn More
-          </button>
+          <Button>ORDER NOW</Button>
         </div>
-      </section>
+      </div>
 
-      <section className="px-6 py-16 bg-black/40">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl mb-4">Our Expertise</h2>
-            <p className="text-gray-300 mb-6">
-              Our team brings together a wealth of experience to deliver outstanding results across various industries.
-              We strive to make an impact through cutting-edge technology and a client-centered approach.
-            </p>
-            <button className="bg-transparent hover:bg-white text-white hover:text-black border border-white px-6 py-2 uppercase transition-colors">
-              Explore Services
-            </button>
-          </div>
-          <div className="relative h-64 md:h-full">
-            <div className="bg-gray-800 h-full w-full rounded"></div>
-          </div>
-        </div>
-      </section>
+      <Footer/> 
+      
+
     </div>
   );
-}
+};
+
+export default Home;
