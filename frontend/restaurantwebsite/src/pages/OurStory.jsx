@@ -9,6 +9,14 @@ export default function OurStory() {
     values: false,
   });
 
+  const restaurantImages = [
+    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946223/pexels-photo-7594058_a4p559.jpg",
+    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946363/pexels-photo-4473496_tx05xe.jpg",
+    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946384/pexels-photo-6937476_zvwweb.jpg",
+    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946972/free-photo-of-vibrant-night-scene-in-asian-alley-with-lanterns_brgwkx.jpg",
+    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745947010/pexels-photo-6937466_vrurdi.jpg",
+  ];
+
   useEffect(() => {
     setIsVisible((prev) => ({ ...prev, header: true }));
 
@@ -101,9 +109,9 @@ export default function OurStory() {
           <div className="flex flex-col md:flex-row gap-8">
             <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow p-6 flex-1">
               <div className="rounded-full overflow-hidden w-40 h-40 mx-auto mb-6">
-                <img 
-                  src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861845/free-photo-of-a-chef-holding-a-plate_ywwszt.jpg" 
-                  alt="Chef Sombat" 
+                <img
+                  src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861845/free-photo-of-a-chef-holding-a-plate_ywwszt.jpg"
+                  alt="Chef Sombat"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -124,9 +132,9 @@ export default function OurStory() {
 
             <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow p-6 flex-1">
               <div className="rounded-full overflow-hidden w-40 h-40 mx-auto mb-6">
-              <img 
-                  src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861943/middle-age-adult-having-fun-night_23-2149237449_nt7pue.jpg" 
-                  alt="Chef Sombat" 
+                <img
+                  src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861943/middle-age-adult-having-fun-night_23-2149237449_nt7pue.jpg"
+                  alt="Chef Sombat"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -218,15 +226,16 @@ export default function OurStory() {
         <h2 className="text-3xl font-bold text-red-500 mb-8 text-center">
           Our Restaurant
         </h2>
+
         <div className="flex overflow-x-auto gap-4 px-8 pb-4 scrollbar-hide">
-          {[1, 2, 3, 4, 5].map((i) => (
+          {restaurantImages.map((url, i) => (
             <div
               key={i}
               className="flex-none w-64 h-48 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
             >
               <img
-                src={`/api/placeholder/300/200`}
-                alt={`Restaurant image ${i}`}
+                src={url}
+                alt={`Restaurant image ${i + 1}`}
                 className="w-full h-full object-cover"
               />
             </div>

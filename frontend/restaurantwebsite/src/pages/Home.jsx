@@ -8,33 +8,29 @@ const Home = () => {
   return (
     <div className="bg-[#F1FAEE] min-h-screen">
       <div className="bg-[#2D3142] text-[#F1FAEE]">
-        <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0">
+        <div className="relative h-[100vh] overflow-hidden">
+          <video
+            src="https://res.cloudinary.com/dav7tzdzv/video/upload/v1745861460/12803238_2560_1440_25fps_jirffw.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          >
+            Your browser does not support the video tag.
+          </video>
+
+          <div className="relative z-10 flex flex-col justify-center items-center h-full text-center text-[#F1FAEE] bg-black/60 px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#E63946]">
               AUTHENTIC THAI STREET FOOD EXPERIENCE
             </h1>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 max-w-2xl">
               Bringing the vibrant flavors and energy of Bangkok's street food
               scene right to your table.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="primary">ORDER NOW</Button>
               <Button variant="outline">VIEW MENU</Button>
-            </div>
-          </div>
-
-          <div className="md:w-1/2">
-            <div className="rounded-lg overflow-hidden shadow-xl ml-10">
-              <video
-                src="https://res.cloudinary.com/dav7tzdzv/video/upload/v1745861460/12803238_2560_1440_25fps_jirffw.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                Your browser does not support the video tag.
-              </video>
             </div>
           </div>
         </div>
