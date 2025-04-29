@@ -8,107 +8,30 @@ export default function MenuPage() {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        // const response = await fetch('/api/menu');
-        // const data = await response.json();
+        const response = await fetch('http://localhost:5000/api/menu'); 
+        const data = await response.json();
         
-        const mockData = {
-          categories: [
-            {
-              id: 1,
-              name: "Starters",
-              items: [
-                {
-                  id: 101,
-                  name: "Spring Rolls",
-                  description: "Crispy vegetable spring rolls served with sweet chili sauce",
-                  price: 8.95,
-                  allergens: ["Gluten", "Soy"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 102,
-                  name: "Satay Skewers",
-                  description: "Grilled chicken skewers with peanut sauce",
-                  price: 10.95,
-                  allergens: ["Peanuts"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 103,
-                  name: "Tom Yum Soup",
-                  description: "Spicy and sour soup with mushrooms and lemongrass",
-                  price: 9.95,
-                  allergens: ["Shellfish"],
-                  image: "/api/placeholder/400/300"
-                }
-              ]
-            },
-            {
-              id: 2,
-              name: "Street Food Favorites",
-              items: [
-                {
-                  id: 201,
-                  name: "Pad Thai",
-                  description: "Stir-fried rice noodles with eggs, tofu, bean sprouts, and peanuts in a tangy sauce",
-                  price: 14.95,
-                  allergens: ["Eggs", "Peanuts", "Soy"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 202,
-                  name: "Som Tam (Papaya Salad)",
-                  description: "Spicy green papaya salad with tomatoes, peanuts, and a zesty lime dressing",
-                  price: 12.95,
-                  allergens: ["Peanuts", "Fish"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 203,
-                  name: "Mango Sticky Rice",
-                  description: "Sweet sticky rice topped with fresh mango slices and coconut cream",
-                  price: 9.95,
-                  allergens: [],
-                  image: "/api/placeholder/400/300"
-                }
-              ]
-            },
-            {
-              id: 3,
-              name: "Main Courses",
-              items: [
-                {
-                  id: 301,
-                  name: "Green Curry",
-                  description: "Fragrant green curry with bamboo shoots, bell peppers, and Thai basil",
-                  price: 16.95,
-                  allergens: ["Shellfish"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 302,
-                  name: "Basil Stir Fry",
-                  description: "Spicy stir-fried meat with Thai holy basil, chili, and garlic",
-                  price: 15.95,
-                  allergens: ["Soy"],
-                  image: "/api/placeholder/400/300"
-                },
-                {
-                  id: 303,
-                  name: "Massaman Curry",
-                  description: "Slow-cooked curry with potatoes, onions, and peanuts in a rich sauce",
-                  price: 17.95,
-                  allergens: ["Peanuts"],
-                  image: "/api/placeholder/400/300"
-                }
-              ]
-            }
-          ]
-        };
+        // Group items by category
+        const groupedCategories = data.reduce((categories, item) => {
+          // Check if the category already exists
+          const category = categories.find((cat) => cat.name === item.category);
+          if (category) {
+            // If category exists, push the item into the category's items array
+            category.items.push(item);
+          } else {
+            // Otherwise, create a new category with the item
+            categories.push({
+              name: item.category,
+              id: item.category.toLowerCase().replace(/\s+/g, '-'),
+              items: [item],
+            });
+          }
+          return categories;
+        }, []);
         
-        setMenuCategories(mockData.categories);
-        if (mockData.categories.length > 0) {
-          setActiveCategory(mockData.categories[0].id);
+        setMenuCategories(groupedCategories);
+        if (groupedCategories.length > 0) {
+          setActiveCategory(groupedCategories[0].id);
         }
         setLoading(false);
       } catch (error) {
@@ -116,10 +39,10 @@ export default function MenuPage() {
         setLoading(false);
       }
     };
-
+  
     fetchMenu();
   }, []);
-
+  
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="bg-gray-800 text-white py-16">
@@ -166,7 +89,7 @@ export default function MenuPage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map(item => (
                   <div 
-                    key={item.id} 
+                    key={item._id} 
                     className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                   >
                     <div className="relative h-48 overflow-hidden">

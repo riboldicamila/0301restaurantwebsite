@@ -16,6 +16,7 @@ exports.createMenuItem = async (req, res) => {
 exports.getAllMenuItems = async (req, res) => {
     try {
         const items = await MenuItem.find();
+        console.log("Request for menu");
         res.status(200).json(items);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching menu items' });

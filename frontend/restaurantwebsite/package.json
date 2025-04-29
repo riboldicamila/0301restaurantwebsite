@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "tailwind:init": "tailwindcss init -p"
   },
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
     "react": "^19.0.0",
