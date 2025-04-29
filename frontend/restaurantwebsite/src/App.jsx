@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import OurStory from "./pages/OurStory";
+import Reservation from "./pages/Reservations";
 
 import "./App.css";
 
@@ -15,10 +16,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/menu" element={<Menu />} />
-        {/* <Route path="/specials" element={<Specials />} /> */}
+        <Route path="/reservations" element={<Reservation />} /> 
         <Route path="/our-story" element={<OurStory />} />
-        {/* <Route path="/recipes" element={<Recipes />} /> */}
-        {/* <Route path="/contact" element={<Contact />} />  */}
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
