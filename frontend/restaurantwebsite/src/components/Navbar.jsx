@@ -17,12 +17,12 @@ const Navbar = () => {
             <img
               src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1746006222/Logo_Inchiostro_Semplice_Bianco_Nero-removebg-preview_wf00gz.png"
               alt="Sabai Thai Logo"
-              className="h-10 w-auto scale-130"
+              className="h-10 w-auto scale-120 ml-1"
             />
           </Link>
         </div>
 
-        <div className="hidden md:flex space-x-6 font-semibold text-[18px]">
+        <div className="hidden md:flex space-x-6 font-semibold text-[16px]">
           <Link to="/" className="hover:text-[#A5D8A6] transition-colors">
             HOME
           </Link>
