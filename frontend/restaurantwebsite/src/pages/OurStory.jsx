@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ChevronRight, Star } from "lucide-react";
+import RestaurantGallery from "../components/RestaurantGallery";
 
 export default function OurStory() {
   const [isVisible, setIsVisible] = useState({
@@ -12,7 +13,7 @@ export default function OurStory() {
   });
 
   const restaurantImages = [
-    "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946223/pexels-photo-7594058_a4p559.jpg",
+    // "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946223/pexels-photo-7594058_a4p559.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946363/pexels-photo-4473496_tx05xe.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946384/pexels-photo-6937476_zvwweb.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946972/free-photo-of-vibrant-night-scene-in-asian-alley-with-lanterns_brgwkx.jpg",
@@ -231,26 +232,8 @@ export default function OurStory() {
         </div>
       </div>
 
-      <div className="py-16 bg-slate-800">
-        <h2 className="text-3xl font-bold text-red-500 mb-8 text-center">
-          Our Restaurant
-        </h2>
+      <RestaurantGallery restaurantImages={restaurantImages} />
 
-        <div className="flex overflow-x-auto gap-4 px-8 pb-4 scrollbar-hide">
-          {restaurantImages.map((url, i) => (
-            <div
-              key={i}
-              className="flex-none w-64 h-48 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
-            >
-              <img
-                src={url}
-                alt={`Restaurant image ${i + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
