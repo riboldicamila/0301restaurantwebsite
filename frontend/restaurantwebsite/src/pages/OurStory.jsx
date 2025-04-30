@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { ChevronRight, Star } from "lucide-react";
 
 export default function OurStory() {
@@ -17,6 +19,12 @@ export default function OurStory() {
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745947010/pexels-photo-6937466_vrurdi.jpg",
   ];
 
+  const navigate = useNavigate();
+
+  const handleReservationClick = () => {
+    navigate("/reservations");
+  };
+
   useEffect(() => {
     setIsVisible((prev) => ({ ...prev, header: true }));
 
@@ -34,6 +42,7 @@ export default function OurStory() {
 
     return () => timers.forEach((timer) => clearTimeout(timer));
   }, []);
+
 
   return (
     <div className="bg-slate-900 min-h-screen">
@@ -216,7 +225,7 @@ export default function OurStory() {
             "To transport our guests to the vibrant streets of Bangkok through
             authentic flavors and genuine Thai hospitality."
           </p>
-          <button className="bg-white text-red-500 font-bold px-6 py-3 rounded flex items-center mx-auto hover:bg-slate-100 transition-colors">
+          <button onClick={handleReservationClick} className="bg-white text-red-500 font-bold px-6 py-3 rounded flex items-center mx-auto hover:bg-slate-100 transition-colors">
             RESERVE A TABLE <ChevronRight size={20} className="ml-2" />
           </button>
         </div>

@@ -13,14 +13,17 @@ const Navbar = () => {
     <nav className="bg-[#2D3142] text-[#F1FAEE] shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-[#E63946]">SABAI THAI</h1>
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1746006222/Logo_Inchiostro_Semplice_Bianco_Nero-removebg-preview_wf00gz.png"
+              alt="Sabai Thai Logo"
+              className="h-10 w-auto scale-130"
+            />
+          </Link>
         </div>
 
-        <div className="hidden md:flex space-x-6">
-          <Link
-            to="/"
-            className="hover:text-[#A5D8A6] transition-colors"
-          >
+        <div className="hidden md:flex space-x-6 font-semibold text-[18px]">
+          <Link to="/" className="hover:text-[#A5D8A6] transition-colors">
             HOME
           </Link>
           <Link to="/menu" className="hover:text-[#A5D8A6] transition-colors">
