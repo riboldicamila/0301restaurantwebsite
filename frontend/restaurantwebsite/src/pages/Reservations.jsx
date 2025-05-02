@@ -19,6 +19,7 @@ export default function Reservation() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
+  const [shadowClass, setShadowClass] = useState("bg-black/10");
 
   useEffect(() => {
     const dates = [];
@@ -34,6 +35,14 @@ export default function Reservation() {
     }
 
     setAvailableDates(dates);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShadowClass("bg-black/50");
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const timeSlots = [
@@ -115,7 +124,6 @@ export default function Reservation() {
     });
   };
 
-
   return (
     <div className="min-h-[160vh] bg-blue-500 relative">
       <video
@@ -126,15 +134,16 @@ export default function Reservation() {
         loop
         playsInline
       />
-
-      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+      <div
+        className={`absolute top-0 left-0 w-full h-full ${shadowClass} z-10 transition-all duration-1000`}
+      />
       <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 z-20 max-w-6xl mx-auto px-4 py-12 md:py-16">
         <div className="text-center mb-12">
           <motion.h1
             className="text-4xl md:text-5xl font-bold text-red-500 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: 'easeOut' }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           >
             MAKE A RESERVATION
           </motion.h1>
@@ -142,7 +151,7 @@ export default function Reservation() {
             className="text-lg text-white max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }} 
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
             Reserve your table at our authentic Thai street food restaurant and
             experience the vibrant flavors of Bangkok in a memorable dining
