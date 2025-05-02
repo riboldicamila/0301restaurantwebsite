@@ -113,7 +113,9 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button onClick={handleOrderNowClick} variant="primary">ORDER NOW</Button>
+              <Button onClick={handleOrderNowClick} variant="primary">
+                ORDER NOW
+              </Button>
               <Button variant="outline" onClick={handleMenuClick}>
                 VIEW MENU
               </Button>
@@ -202,17 +204,19 @@ const Home = () => {
                   description="Our dishes capture the perfect balance of sweet, sour, salty, and spicy that Thai street food is famous for."
                   icon={
                     <svg
-                      className="w-12 h-12 text-[#E63946] bg-[#ffffffa6]"
+                      className="w-12 h-12 text-[#E63946] "
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="8"
+                        stroke="#E63946"
+                        strokeWidth="2"
+                        fill="none"
                       />
                     </svg>
                   }
