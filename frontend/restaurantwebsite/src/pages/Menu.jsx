@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function MenuPage() {
   const [menuCategories, setMenuCategories] = useState([]);
@@ -8,18 +9,14 @@ export default function MenuPage() {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/menu'); 
+        const response = await fetch('http://localhost:5000/api/menu');
         const data = await response.json();
-        
-        // Group items by category
+
         const groupedCategories = data.reduce((categories, item) => {
-          // Check if the category already exists
           const category = categories.find((cat) => cat.name === item.category);
           if (category) {
-            // If category exists, push the item into the category's items array
             category.items.push(item);
           } else {
-            // Otherwise, create a new category with the item
             categories.push({
               name: item.category,
               id: item.category.toLowerCase().replace(/\s+/g, '-'),
@@ -28,7 +25,7 @@ export default function MenuPage() {
           }
           return categories;
         }, []);
-        
+
         setMenuCategories(groupedCategories);
         if (groupedCategories.length > 0) {
           setActiveCategory(groupedCategories[0].id);
@@ -39,38 +36,66 @@ export default function MenuPage() {
         setLoading(false);
       }
     };
-  
+
     fetchMenu();
   }, []);
-  
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="bg-gray-800 text-white py-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-4">OUR MENU</h1>
-          <p className="text-xl text-center text-red-500">
+          <motion.h1
+            className="text-4xl font-bold text-center mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+          >
+            OUR MENU
+          </motion.h1>
+          <motion.p
+            className="text-xl text-center text-red-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             Experience authentic Thai flavors crafted with passion
-          </p>
+          </motion.p>
         </div>
       </div>
 
       <div className="bg-white shadow-md">
         <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto py-4 no-scrollbar">
+          <motion.div
+            className="flex overflow-x-auto py-4 no-scrollbar"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.08,
+                },
+              },
+            }}
+          >
             {menuCategories.map(category => (
-              <button
+              <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-2 mx-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors ${
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className={`px-6 py-2 mx-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors duration-300 ${
                   activeCategory === category.id
                     ? "bg-red-500 text-white"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
                 {category.name}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -83,14 +108,18 @@ export default function MenuPage() {
           menuCategories.map(category => (
             <div 
               key={category.id} 
-              className={`mb-12 ${activeCategory === category.id ? "block" : "hidden"}`}
+              className={`mb-12 transition-opacity duration-500 ${
+                activeCategory === category.id ? "opacity-100 block" : "opacity-0 hidden"
+              }`}
             >
               <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">{category.name}</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map(item => (
-                  <div 
-                    key={item._id} 
+                  <motion.div 
+                    key={item._id}
                     className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div className="relative h-48 overflow-hidden">
                       <img 
@@ -114,7 +143,7 @@ export default function MenuPage() {
                         </div>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

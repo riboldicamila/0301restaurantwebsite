@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import Button from "./Button";
+import Banner from "../components/BannerInfo";
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+
+  const handleOrderNowClick = () => {
+    setShowBanner(true);
+  };
+
+  const handleCloseBanner = () => {
+    setShowBanner(false);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,7 +56,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button>ORDER NOW</Button>
+          <Button onClick={handleOrderNowClick}>ORDER NOW</Button>
         </div>
 
         <div className="md:hidden">
@@ -113,6 +125,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      {showBanner && <Banner onClose={handleCloseBanner} />}
     </nav>
   );
 };

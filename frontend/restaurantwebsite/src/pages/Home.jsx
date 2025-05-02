@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import Button from "../components/Button";
 import DishCard from "../components/DishCard";
 import BenefitCard from "../components/BenefitCard";
+import Banner from "../components/BannerInfo";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -42,6 +43,16 @@ const AnimatedSection = ({ children, className }) => {
 };
 
 const Home = () => {
+  const [showBanner, setShowBanner] = useState(false);
+
+  const handleOrderNowClick = () => {
+    setShowBanner(true);
+  };
+
+  const handleCloseBanner = () => {
+    setShowBanner(false);
+  };
+
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
@@ -102,7 +113,7 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button variant="primary">ORDER NOW</Button>
+              <Button onClick={handleOrderNowClick} variant="primary">ORDER NOW</Button>
               <Button variant="outline" onClick={handleMenuClick}>
                 VIEW MENU
               </Button>
@@ -273,11 +284,12 @@ const Home = () => {
               flavors of Thai street food from the comfort of your home.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <Button>ORDER NOW</Button>
+              <Button onClick={handleOrderNowClick}>ORDER NOW</Button>
             </motion.div>
           </AnimatedSection>
         </div>
       </div>
+      {showBanner && <Banner onClose={handleCloseBanner} />}
     </div>
   );
 };
