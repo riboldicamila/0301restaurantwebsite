@@ -28,7 +28,6 @@ export default function Reservation() {
     endDate.setMonth(today.getMonth() + 1);
 
     for (let d = new Date(today); d <= endDate; d.setDate(d.getDate() + 1)) {
-      // Randomly mark some dates as unavailable
       if (Math.random() > 0.2) {
         dates.push(new Date(d));
       }
@@ -91,7 +90,6 @@ export default function Reservation() {
     try {
       console.log("Reservation data:", formData);
 
-      // to remove when app api call.
       setTimeout(() => {
         setShowSuccess(true);
         setFormData({
@@ -134,13 +132,11 @@ export default function Reservation() {
         loop
         playsInline
       />
-      <div
-        className={`absolute top-0 left-0 w-full h-full ${shadowClass} z-10 transition-all duration-1000`}
-      />
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 z-20 max-w-6xl mx-auto px-4 py-12 md:py-16">
+      <div className={`absolute top-0 left-0 w-full h-full ${shadowClass} z-10 transition-all duration-1000`} />
+      <div className="relative z-20 max-w-6xl mx-auto px-4 py-12 md:py-16">
         <div className="text-center mb-12">
           <motion.h1
-            className="text-4xl md:text-5xl font-bold text-red-500 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-500 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
@@ -148,218 +144,121 @@ export default function Reservation() {
             MAKE A RESERVATION
           </motion.h1>
           <motion.p
-            className="text-lg text-white max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-white max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Reserve your table at our authentic Thai street food restaurant and
-            experience the vibrant flavors of Bangkok in a memorable dining
-            experience.
+            Reserve your table at our authentic Thai street food restaurant and experience the vibrant flavors of Bangkok in a memorable dining experience.
           </motion.p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 max-w-3xl mx-auto">
+        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Contact Information
-                </h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Contact Information</h2>
 
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-gray-700 font-medium mb-1"
-                  >
-                    Full Name
-                  </label>
+                  <label htmlFor="name" className="block text-gray-700 font-medium mb-1">Full Name</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 font-medium mb-1"
-                  >
-                    Email Address
-                  </label>
+                  <label htmlFor="email" className="block text-gray-700 font-medium mb-1">Email Address</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-gray-700 font-medium mb-1"
-                  >
-                    Phone Number
-                  </label>
+                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-1">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Reservation Details
-                </h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Reservation Details</h2>
 
                 <div>
-                  <label
-                    htmlFor="guests"
-                    className="block text-gray-700 font-medium mb-1"
-                  >
-                    Number of Guests
-                  </label>
+                  <label htmlFor="guests" className="block text-gray-700 font-medium mb-1">Number of Guests</label>
                   <select
                     id="guests"
                     name="guests"
                     value={formData.guests}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                   >
                     <option value="">Select</option>
-                    <option value="1">1 Person</option>
-                    <option value="2">2 People</option>
-                    <option value="3">3 People</option>
-                    <option value="4">4 People</option>
-                    <option value="5">5 People</option>
-                    <option value="6">6 People</option>
-                    <option value="7">7 People</option>
-                    <option value="8">8 People</option>
+                    {[...Array(8).keys()].map((i) => (
+                      <option key={i + 1} value={i + 1}>{`${i + 1} ${i === 0 ? "Person" : "People"}`}</option>
+                    ))}
                     <option value="9+">9+ People (Please call)</option>
                   </select>
                 </div>
 
-                <div className="relative">
-                  <label
-                    htmlFor="date"
-                    className="block text-gray-700 font-medium mb-1"
-                  >
-                    Reservation Date
-                  </label>
+                <div>
+                  <label htmlFor="date" className="block text-gray-700 font-medium mb-1">Date</label>
                   <div className="relative">
                     <input
                       type="text"
                       id="date"
                       name="date"
                       value={formatDate(selectedDate)}
-                      onClick={() => setCalendarOpen(!calendarOpen)}
                       readOnly
-                      placeholder="Select a date"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+                      onClick={() => setCalendarOpen(!calendarOpen)}
+                      className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
-                    <Calendar
-                      className="absolute right-3 top-2.5 text-gray-500"
-                      size={20}
-                    />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   </div>
 
                   {calendarOpen && (
-                    <div className="absolute z-10 mt-1 bg-white shadow-lg rounded-md border border-gray-200 p-4">
-                      <div className="grid grid-cols-7 gap-1">
-                        {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
-                          <div
-                            key={i}
-                            className="text-center text-sm font-medium text-gray-500"
-                          >
-                            {day}
-                          </div>
-                        ))}
-
-                        {Array.from({ length: 35 }, (_, i) => {
-                          const today = new Date();
-                          const day = new Date(
-                            today.getFullYear(),
-                            today.getMonth(),
-                            today.getDate() + i - today.getDay()
-                          );
-                          const isAvailable = availableDates.some(
-                            (d) => d.toDateString() === day.toDateString()
-                          );
-                          const isPast = day < today;
-                          const isSelected =
-                            selectedDate &&
-                            day.toDateString() === selectedDate.toDateString();
-
-                          // Only show dates up to one month ahead
-                          const endDate = new Date();
-                          endDate.setMonth(today.getMonth() + 1);
-                          const isFuture = day > endDate;
-
-                          return (
-                            <div
-                              key={i}
-                              onClick={() =>
-                                isAvailable &&
-                                !isPast &&
-                                !isFuture &&
-                                handleDateSelect(day)
-                              }
-                              className={`
-                              text-center py-1 rounded-md text-sm
-                              ${isSelected ? "bg-red-500 text-white" : ""}
-                              ${
-                                isAvailable && !isPast && !isFuture
-                                  ? "hover:bg-red-100 cursor-pointer"
-                                  : ""
-                              }
-                              ${
-                                !isAvailable || isPast || isFuture
-                                  ? "text-gray-300 cursor-not-allowed"
-                                  : ""
-                              }
-                            `}
-                            >
-                              {day.getDate()}
-                            </div>
-                          );
-                        })}
-                      </div>
+                    <div className="mt-2 grid grid-cols-7 gap-2 bg-white p-4 rounded-lg shadow border border-gray-200">
+                      {availableDates.map((date) => (
+                        <button
+                          key={date.toISOString()}
+                          type="button"
+                          onClick={() => handleDateSelect(date)}
+                          className={`px-2 py-1 rounded ${selectedDate?.toDateString() === date.toDateString() ? "bg-red-500 text-white" : "bg-gray-100 hover:bg-gray-200"}`}
+                        >
+                          {date.getDate()}
+                        </button>
+                      ))}
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-1">
-                    Reservation Time
-                  </label>
+                  <label htmlFor="time" className="block text-gray-700 font-medium mb-1">Time</label>
                   <div className="grid grid-cols-3 gap-2">
                     {timeSlots.map((slot) => (
-                      <div
+                      <button
                         key={slot.id}
+                        type="button"
                         onClick={() => handleTimeSelect(slot.id)}
-                        className={`
-                        px-3 py-2 border-2 rounded-md text-center cursor-pointer
-                        ${
-                          selectedTime === slot.id
-                            ? "bg-red-500 text-white border-red-500"
-                            : "border-red-500 text-red-500 hover:bg-red-50"
-                        }
-                      `}
+                        className={`px-2 py-1 rounded border ${selectedTime === slot.id ? "bg-red-500 text-white border-red-500" : "bg-white hover:bg-gray-100 border-gray-300"}`}
                       >
                         {slot.label}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -367,45 +266,48 @@ export default function Reservation() {
             </div>
 
             <div>
-              <label
-                htmlFor="notes"
-                className="block text-gray-700 font-medium mb-1"
-              >
-                Special Requests / Notes (Optional)
-              </label>
+              <label htmlFor="notes" className="block text-gray-700 font-medium mb-1">Special Requests</label>
               <textarea
                 id="notes"
                 name="notes"
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="3"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="Any dietary requirements or special requests?"
+                className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                placeholder="Any special requests or dietary restrictions?"
               ></textarea>
             </div>
 
-            <div
-              onClick={handleSubmit}
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-md transition duration-300 text-center cursor-pointer"
+            <button
+              type="submit"
+              className="w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 transition"
             >
               Confirm Reservation
-            </div>
+            </button>
           </div>
+        </form>
 
-          {showSuccess && (
-            <div className="mt-6 p-4 bg-green-50 border border-green-500 text-green-700 rounded-md">
-              Your reservation has been successfully submitted! You will receive
-              a confirmation email shortly.
-            </div>
-          )}
+        {showSuccess && (
+          <motion.div
+            className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            Reservation submitted successfully!
+          </motion.div>
+        )}
 
-          {showError && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-500 text-red-700 rounded-md">
-              There was an error processing your reservation. Please ensure all
-              required fields are filled.
-            </div>
-          )}
-        </div>
+        {showError && (
+          <motion.div
+            className="fixed bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            Please fill in all required fields.
+          </motion.div>
+        )}
       </div>
     </div>
   );

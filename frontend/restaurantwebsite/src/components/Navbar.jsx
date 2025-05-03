@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import Banner from "../components/BannerInfo";
 
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
@@ -92,39 +91,36 @@ const Navbar = () => {
         <div className="md:hidden bg-[#1D2030] px-4 py-2">
           <div className="flex flex-col space-y-3 pb-3">
             <Link
+              to="/"
+              className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
+            >
+              HOME
+            </Link>
+            <Link
               to="/menu"
               className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
             >
               MENU
             </Link>
             <Link
-              to="/specials"
-              className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
-            >
-              SPECIALS
-            </Link>
-            <Link
-              to="/about"
+              to="/our-story"
               className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
             >
               OUR STORY
             </Link>
             <Link
-              to="/recipes"
+              to="/reservations"
               className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
             >
-              RECIPES
+              RESERVATIONS
             </Link>
-            <Link
-              to="/contact"
-              className="hover:text-[#A5D8A6] transition-colors pb-2 border-b border-[#3D4152]"
-            >
-              CONTACT
-            </Link>
-            <Button fullWidth>ORDER NOW</Button>
+            <Button fullWidth onClick={handleOrderNowClick}>
+              ORDER NOW
+            </Button>
           </div>
         </div>
       )}
+
       {showBanner && <Banner onClose={handleCloseBanner} />}
     </nav>
   );
