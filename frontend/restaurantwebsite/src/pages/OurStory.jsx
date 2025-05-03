@@ -12,6 +12,8 @@ export default function OurStory() {
     values: false,
   });
 
+  const [isHovered, setIsHovered] = useState(false);
+
   const restaurantImages = [
     // "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946223/pexels-photo-7594058_a4p559.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946363/pexels-photo-4473496_tx05xe.jpg",
@@ -43,7 +45,6 @@ export default function OurStory() {
 
     return () => timers.forEach((timer) => clearTimeout(timer));
   }, []);
-
 
   return (
     <div className="bg-slate-900 min-h-screen">
@@ -117,12 +118,12 @@ export default function OurStory() {
             Meet Our Founders
           </h2>
           <div className="flex flex-col md:flex-row gap-8">
-            <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow p-6 flex-1">
+            <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:bg-slate-700 p-6 flex-1">
               <div className="rounded-full overflow-hidden w-40 h-40 mx-auto mb-6">
                 <img
                   src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861845/free-photo-of-a-chef-holding-a-plate_ywwszt.jpg"
                   alt="Chef Sombat"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                 />
               </div>
               <h3 className="text-xl font-bold text-red-500 mb-2 text-center">
@@ -140,12 +141,12 @@ export default function OurStory() {
               </p>
             </div>
 
-            <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow p-6 flex-1">
+            <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:bg-slate-700 p-6 flex-1">
               <div className="rounded-full overflow-hidden w-40 h-40 mx-auto mb-6">
                 <img
                   src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745861943/middle-age-adult-having-fun-night_23-2149237449_nt7pue.jpg"
-                  alt="Chef Sombat"
-                  className="w-full h-full object-cover"
+                  alt="Malai"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                 />
               </div>
               <h3 className="text-xl font-bold text-red-500 mb-2 text-center">
@@ -226,14 +227,24 @@ export default function OurStory() {
             "To transport our guests to the vibrant streets of Bangkok through
             authentic flavors and genuine Thai hospitality."
           </p>
-          <button onClick={handleReservationClick} className="bg-white text-red-500 font-bold px-6 py-3 rounded flex items-center mx-auto hover:bg-slate-100 transition-colors">
-            RESERVE A TABLE <ChevronRight size={20} className="ml-2" />
+          <button
+            onClick={handleReservationClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="bg-white text-red-500 font-bold px-6 py-3 rounded flex items-center mx-auto hover:bg-slate-200 transition-colors group"
+          >
+            RESERVE A TABLE
+            <ChevronRight
+              size={20}
+              className={`ml-2 ${
+                isHovered ? "animate-bounce" : ""
+              }`}
+            />
           </button>
         </div>
       </div>
 
       <RestaurantGallery restaurantImages={restaurantImages} />
-
     </div>
   );
 }

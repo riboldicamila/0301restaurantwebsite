@@ -113,7 +113,7 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button onClick={handleOrderNowClick} variant="primary">
+              <Button onClick={handleOrderNowClick} variant="primary" >
                 ORDER NOW
               </Button>
               <Button variant="outline" onClick={handleMenuClick}>
@@ -163,7 +163,7 @@ const Home = () => {
           </div>
 
           <motion.div className="text-center mt-12" variants={fadeInUp}>
-            <Button variant="secondary" onClick={handleMenuClick}>
+            <Button variant="secondary" onClick={handleMenuClick} arrowButton={true}>
               EXPLORE FULL MENU
             </Button>
           </motion.div>
@@ -288,7 +288,7 @@ const Home = () => {
               flavors of Thai street food from the comfort of your home.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <Button onClick={handleOrderNowClick}>ORDER NOW</Button>
+              <Button onClick={handleOrderNowClick} arrowButton={true}>ORDER NOW</Button>
             </motion.div>
           </AnimatedSection>
         </div>
