@@ -9,9 +9,9 @@ export default function MenuPage() {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/menu');
+        const response = await fetch('http://sabaithai.onrender.com/api/menu');
         const data = await response.json();
-
+        
         const groupedCategories = data.reduce((categories, item) => {
           const category = categories.find((cat) => cat.name === item.category);
           if (category) {
@@ -25,7 +25,7 @@ export default function MenuPage() {
           }
           return categories;
         }, []);
-
+        
         setMenuCategories(groupedCategories);
         if (groupedCategories.length > 0) {
           setActiveCategory(groupedCategories[0].id);
@@ -36,10 +36,9 @@ export default function MenuPage() {
         setLoading(false);
       }
     };
-
+    
     fetchMenu();
   }, []);
-
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="bg-gray-800 text-white py-16">
