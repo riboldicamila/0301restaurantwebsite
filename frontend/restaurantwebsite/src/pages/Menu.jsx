@@ -9,7 +9,7 @@ export default function MenuPage() {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await fetch('http://sabaithai.onrender.com/api/menu');
+        const response = await fetch('https://sabaithai.onrender.com/api/menu');
         const data = await response.json();
         
         const groupedCategories = data.reduce((categories, item) => {
