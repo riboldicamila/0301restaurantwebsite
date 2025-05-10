@@ -29,6 +29,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
@@ -53,6 +54,10 @@ app.use("/api/orders", orderRoutes);
 
 app.use((err, req, res, next) => {
   console.error("Error occurred:", err.message);
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   res.status(500).json({ error: "Internal Server Error" });
 });
 
