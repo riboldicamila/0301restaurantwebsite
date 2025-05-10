@@ -9,4 +9,4 @@ const menuItemSchema = new mongoose.Schema({
   category: { type: String, required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('MenuItem', menuItemSchema);
+module.exports = mongoose.model('MenuItem', menuItemSchema, 'menuitems');

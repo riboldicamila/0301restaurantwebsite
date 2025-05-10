@@ -47,7 +47,7 @@ export default function OurStory() {
   }, []);
 
   return (
-    <div className="bg-slate-900 min-h-screen">
+    <div className="bg-slate-900 min-h-screen font-montserrat ">
       <div
         className={`px-8 py-16 flex flex-col items-center transform transition-all duration-700 ${
           isVisible.header

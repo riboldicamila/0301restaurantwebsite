@@ -77,7 +77,7 @@ const Home = () => {
 
   return (
     <div className="bg-[#F1FAEE] min-h-screen">
-      <div className="bg-[#2D3142] text-[#F1FAEE]">
+      <div className="bg-[#2D3142] text-[#F1FAEE] font-montserrat ">
         <div className="relative h-[100vh] overflow-hidden">
           <video
             src="https://res.cloudinary.com/dav7tzdzv/video/upload/v1745861460/12803238_2560_1440_25fps_jirffw.mp4"
@@ -97,7 +97,7 @@ const Home = () => {
             variants={heroTextVariants}
           >
             <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-4 text-[#E63946]"
+              className="text-4xl md:text-5xl font-montserrat font-bold mb-4 text-[#E63946]"
               variants={heroItemVariants}
             >
               AUTHENTIC THAI STREET FOOD EXPERIENCE
