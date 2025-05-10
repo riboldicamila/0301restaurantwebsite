@@ -10,7 +10,7 @@ const Button = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  const baseClasses = "px-6 py-2 rounded-md font-medium transition-all duration-300 inline-flex items-center justify-center";
+  const baseClasses = "px-6 py-2 rounded-md font-medium transition-all duration-300 inline-flex items-center justify-center font-trirong";
   
   const variantClasses = {
     primary: "bg-[#E63946] hover:bg-[#D62836] text-[#F1FAEE]",

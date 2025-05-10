@@ -47,7 +47,7 @@ export default function MenuPage() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen font-montserrat">
+    <div className="bg-gray-100 min-h-screen font-trirong">
       <div className="bg-gray-800 text-white py-16">
         <div className="container mx-auto px-4">
           <motion.h1

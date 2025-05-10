@@ -123,7 +123,7 @@ export default function Reservation() {
   };
 
   return (
-    <div className="min-h-[160vh] bg-blue-500 relative">
+    <div className="min-h-[160vh] bg-blue-500 relative font-trirong">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover object-left-top z-0"
         src="https://res.cloudinary.com/dav7tzdzv/video/upload/v1746175692/3296571-uhd_2732_1440_25fps_v8uegw.mp4"

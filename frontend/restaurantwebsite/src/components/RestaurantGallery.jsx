@@ -32,7 +32,7 @@ const RestaurantGallery = ({ restaurantImages }) => {
   };
 
   return (
-    <div className="py-16 bg-slate-800">
+    <div className="py-16 bg-slate-800 font-trirong">
       <motion.h2 
         className="text-3xl font-bold text-red-500 mb-10 text-center"
         initial={{ opacity: 0, y: -20 }}

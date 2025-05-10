@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const DishCard = ({ title, description, rating, imageUrl }) => {
   return (
     <motion.div 
-      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 font-trirong"
       whileHover={{ 
         y: -8,
         transition: { duration: 0.3 }

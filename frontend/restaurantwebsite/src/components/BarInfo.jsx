@@ -4,7 +4,7 @@ export default function BarInfo() {
   return (
     <>
       <div className="relative z-10">
-        <div className="hidden md:flex justify-between items-center px-4 py-2 bg-black/80 text-sm">
+        <div className="hidden md:flex justify-between items-center px-4 py-2 bg-black/80 text-sm font-trirong">
           <div className="flex items-center">
             <MapPin size={16} className="mr-1" />
             <span>testing testing testing 04</span>

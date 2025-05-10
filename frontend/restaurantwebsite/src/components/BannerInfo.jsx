@@ -10,7 +10,7 @@ const Banner = ({ onClose }) => {
         exit={{ y: -100, opacity: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="backdrop-blur-md bg-white/90 border border-gray-200 text-gray-800 p-4 rounded-lg shadow-lg mx-4">
+        <div className="backdrop-blur-md bg-white/90 border border-gray-200 text-gray-800 p-4 rounded-lg shadow-lg mx-4 font-trirong">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="h-2 w-2 bg-red-500 rounded-full mr-3 animate-pulse"></div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const BenefitCard = ({ title, description, icon }) => {
   return (
     <motion.div 
-      className="bg-[#ffffffc7] rounded-lg p-6 shadow-md text-center backdrop-blur"
+      className="bg-[#ffffffc7] rounded-lg p-6 shadow-md text-center backdrop-blur font-trirong"
       whileHover={{ 
         y: -5,
         transition: { duration: 0.3 }
