@@ -1,15 +1,20 @@
-require('dotenv').config();
-const cors = require('cors');
-const express = require('express');
-const connectDB = require('./src/config/db');
-const authRoutes = require('./src/routes/auth.routes');
-const menuRoutes = require('./src/routes/menu.routes');
-const reservationRoutes = require('./src/routes/reservation.routes');
-const orderRoutes = require('./src/routes/order.routes');
+require("dotenv").config();
+const cors = require("cors");
+const express = require("express");
+const connectDB = require("./src/config/db");
+const authRoutes = require("./src/routes/auth.routes");
+const menuRoutes = require("./src/routes/menu.routes");
+const reservationRoutes = require("./src/routes/reservation.routes");
+const orderRoutes = require("./src/routes/order.routes");
 
 const app = express();
 
-const allowedOrigins = ['https://sabaithai.vercel.app'];
+const allowedOrigins = [
+  "https://sabaithai.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "http://localhost:5173",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -17,10 +22,10 @@ const corsOptions = {
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      return callback(new Error('Not allowed by CORS'));
+      return callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, 
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -29,26 +34,26 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   console.log(`Incoming request: ${req.method} ${req.url}`);
-  console.log('Request Headers:', req.headers);
+  console.log("Request Headers:", req.headers);
   next();
 });
 
 connectDB()
   .then(() => {
-    console.log('Database connected successfully');
+    console.log("Database connected successfully");
   })
   .catch((err) => {
-    console.error('Database connection failed:', err);
+    console.error("Database connection failed:", err);
   });
 
-app.use('/api/auth', authRoutes);
-app.use('/api/menu', menuRoutes);
-app.use('/api/reservations', reservationRoutes);
-app.use('/api/orders', orderRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/menu", menuRoutes);
+app.use("/api/reservations", reservationRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.use((err, req, res, next) => {
-  console.error('Error occurred:', err.message);
-  res.status(500).json({ error: 'Internal Server Error' });
+  console.error("Error occurred:", err.message);
+  res.status(500).json({ error: "Internal Server Error" });
 });
 
 const port = process.env.PORT || 5000;
