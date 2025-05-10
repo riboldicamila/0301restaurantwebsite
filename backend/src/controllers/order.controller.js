@@ -1,5 +1,5 @@
 const Order = require('../models/order.model');
-const MenuItem = require('../models/menu.model');
+const MenuItem = require('../models/menuItem.model');
 
 exports.createOrder = async (req, res) => {
     try {
