@@ -114,7 +114,7 @@ const Home = () => {
               variants={heroItemVariants}
             >
               <Button onClick={handleOrderNowClick} variant="primary" >
-                ORDER NOW
+                RESERVE NOW
               </Button>
               <Button variant="outline" onClick={handleMenuClick}>
                 VIEW MENU
@@ -284,11 +284,11 @@ const Home = () => {
               className="text-lg mb-8 max-w-2xl mx-auto font-trirong"
               variants={fadeInUp}
             >
-              Order now for delivery or pickup and experience the authentic
-              flavors of Thai street food from the comfort of your home.
+              Reserve now and experience the authentic
+              flavors of Thai street food.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <Button onClick={handleOrderNowClick} arrowButton={true}>ORDER NOW</Button>
+              <Button onClick={handleOrderNowClick} arrowButton={true}>RESERVE NOW</Button>
             </motion.div>
           </AnimatedSection>
         </div>

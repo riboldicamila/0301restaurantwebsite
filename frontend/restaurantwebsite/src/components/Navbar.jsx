@@ -55,7 +55,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button onClick={handleOrderNowClick}>ORDER NOW</Button>
+          <Button onClick={handleOrderNowClick}>RESERVE NOW</Button>
         </div>
 
         <div className="md:hidden">
@@ -115,7 +115,7 @@ const Navbar = () => {
               RESERVATIONS
             </Link>
             <Button fullWidth onClick={handleOrderNowClick}>
-              ORDER NOW
+              RESERVE NOW
             </Button>
           </div>
         </div>
