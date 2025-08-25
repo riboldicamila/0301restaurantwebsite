@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import Button from "./Button";
@@ -7,9 +8,10 @@ import Banner from "../components/BannerInfo";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
+  const navigate = useNavigate();
 
-  const handleOrderNowClick = () => {
-    setShowBanner(true);
+  const handleReserveNow = () => {
+    navigate("/reservations");
   };
 
   const handleCloseBanner = () => {
@@ -55,7 +57,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button onClick={handleOrderNowClick}>RESERVE NOW</Button>
+          <Button onClick={handleReserveNow}>RESERVE NOW</Button>
         </div>
 
         <div className="md:hidden">
@@ -114,7 +116,7 @@ const Navbar = () => {
             >
               RESERVATIONS
             </Link>
-            <Button fullWidth onClick={handleOrderNowClick}>
+            <Button fullWidth onClick={handleReserveNow}>
               RESERVE NOW
             </Button>
           </div>

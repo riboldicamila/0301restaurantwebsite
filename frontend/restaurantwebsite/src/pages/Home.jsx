@@ -45,8 +45,8 @@ const AnimatedSection = ({ children, className }) => {
 const Home = () => {
   const [showBanner, setShowBanner] = useState(false);
 
-  const handleOrderNowClick = () => {
-    setShowBanner(true);
+  const handleReserveNow = () => {
+    navigate("/reservations");
   };
 
   const handleCloseBanner = () => {
@@ -113,7 +113,7 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button onClick={handleOrderNowClick} variant="primary" >
+              <Button onClick={handleReserveNow} variant="primary" >
                 RESERVE NOW
               </Button>
               <Button variant="outline" onClick={handleMenuClick}>
@@ -288,7 +288,7 @@ const Home = () => {
               flavors of Thai street food.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <Button onClick={handleOrderNowClick} arrowButton={true}>RESERVE NOW</Button>
+              <Button onClick={handleReserveNow} arrowButton={true}>RESERVE NOW</Button>
             </motion.div>
           </AnimatedSection>
         </div>
