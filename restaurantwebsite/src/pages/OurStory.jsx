@@ -9,7 +9,7 @@ import { useGradualVisibility } from "../hooks/useGradualVisibility";
 
 import { FOUNDERS } from "../constants/text";
 
-export default function OurStory() {
+const OurStory = () => {
   const isVisible = useGradualVisibility();
 
   return (
@@ -50,4 +50,6 @@ export default function OurStory() {
       <RestaurantGallery />
     </div>
   );
-}
+};
+
+export default OurStory;
