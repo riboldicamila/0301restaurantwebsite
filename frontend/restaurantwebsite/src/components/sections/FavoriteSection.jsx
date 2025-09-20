@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import DishCard from "../components/DishCard";
-import Button from "../components/Button";
-import AnimatedSection from "../components/AnimatedSection";
-import { fadeInUp } from "../utils/animations";
+import DishCard from "../cards/DishCard";
+import Button from "../Button";
+import AnimatedSection from "./AnimatedSection";
+import { fadeInUp } from "../../utils/animations";
 
 const FavoritesSection = ({ onMenuClick }) => {
   return (

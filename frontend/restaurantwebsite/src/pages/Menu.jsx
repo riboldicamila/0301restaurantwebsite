@@ -1,54 +1,53 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import ReserveBanner from "../components/ReserveBanner";
+import ReserveBanner from "../components/sections/ReserveBanner";
+import { fetchMenu } from "../api/menuApi";
 
 export default function MenuPage() {
-  const [menuCategories, setMenuCategories] = useState([]);
+  const [menuData, setMenuData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const API_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:5000/api/menu"
-      : "https://sabaithai.onrender.com/api/menu";
-
   useEffect(() => {
-    const fetchMenu = async () => {
+    const loadMenu = async () => {
       try {
-        const apiUrl = API_URL;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        const groupedCategories = data.reduce((categories, item) => {
-          const category = categories.find((cat) => cat.name === item.category);
-          if (category) {
-            category.items.push(item);
-          } else {
-            categories.push({
-              name: item.category,
-              id: item.category.toLowerCase().replace(/\s+/g, "-"),
-              items: [item],
-            });
-          }
-          return categories;
-        }, []);
-
-        setMenuCategories(groupedCategories);
-        if (groupedCategories.length > 0) {
-          setActiveCategory(groupedCategories[0].id);
-        }
-        setLoading(false);
+        const data = await fetchMenu();
+        setMenuData(data);
       } catch (error) {
-        console.error("Failed to fetch menu data:", error);
+        console.error("Failed to load menu:", error);
+      } finally {
         setLoading(false);
       }
     };
 
-    fetchMenu();
+    loadMenu();
   }, []);
+
+  const groupedCategories = useMemo(() => {
+    return menuData.reduce((categories, item) => {
+      const category = categories.find((cat) => cat.name === item.category);
+      if (category) {
+        category.items.push(item);
+      } else {
+        categories.push({
+          name: item.category,
+          id: item.category.toLowerCase().replace(/\s+/g, "-"),
+          items: [item],
+        });
+      }
+      return categories;
+    }, []);
+  }, [menuData]);
+
+  useEffect(() => {
+    if (groupedCategories.length > 0 && !activeCategory) {
+      setActiveCategory(groupedCategories[0].id);
+    }
+  }, [groupedCategories, activeCategory]);
 
   return (
     <div className="bg-gray-100 min-h-screen font-trirong">
+      {/* Header */}
       <div className="bg-gray-800 text-white py-16">
         <div className="container mx-auto px-4">
           <motion.h1
@@ -70,6 +69,7 @@ export default function MenuPage() {
         </div>
       </div>
 
+      {/* Category Tabs */}
       <div className="bg-white shadow-md">
         <div className="container mx-auto px-4">
           <motion.div
@@ -77,14 +77,10 @@ export default function MenuPage() {
             initial="hidden"
             animate="visible"
             variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.08,
-                },
-              },
+              visible: { transition: { staggerChildren: 0.08 } },
             }}
           >
-            {menuCategories.map((category) => (
+            {groupedCategories.map((category) => (
               <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
@@ -106,13 +102,14 @@ export default function MenuPage() {
         </div>
       </div>
 
+      {/* Menu Items */}
       <div className="container mx-auto px-4 py-12">
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="text-xl text-gray-600">Loading menu...</div>
           </div>
         ) : (
-          menuCategories.map((category) => (
+          groupedCategories.map((category) => (
             <div
               key={category.id}
               className={`mb-12 transition-opacity duration-500 ${

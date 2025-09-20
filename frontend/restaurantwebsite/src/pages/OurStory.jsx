@@ -1,9 +1,9 @@
-import RestaurantGallery from "../components/RestaurantGallery";
-import FounderCard from "../components/FounderCard";
-import { PageHeader } from "../components/PageHeader";
-import { StorySection } from "../components/StorySection";
-import { ValuesSection } from "../components/ValuesSection";
-import { MissionSection } from "../components/MissionSection";
+import RestaurantGallery from "../components/sections/RestaurantGallery";
+import FounderCard from "../components/cards/FounderCard";
+import { PageHeader } from "../components/sections/PageHeader";
+import { StorySection } from "../components/sections/StorySection";
+import { ValuesSection } from "../components/sections/ValuesSection";
+import { MissionSection } from "../components/sections/MissionSection";
 
 import { useGradualVisibility } from "../hooks/useGradualVisibility";
 

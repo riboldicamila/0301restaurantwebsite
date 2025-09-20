@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { staggerContainer } from "../utils/animations";
+import { staggerContainer } from "../../utils/animations";
 
 const AnimatedSection = ({ children, className }) => {
   const [ref, inView] = useInView({

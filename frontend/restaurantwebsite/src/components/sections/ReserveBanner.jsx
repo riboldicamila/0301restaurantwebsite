@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import Button from "../components/Button";
-import AnimatedSection from "../components/AnimatedSection";
-import { fadeInUp } from "../utils/animations";
+import Button from "../Button";
+import AnimatedSection from "./AnimatedSection";
+import { fadeInUp } from "../../utils/animations";
 
 const ReserveBanner = ({ onReserveClick }) => {
   return (

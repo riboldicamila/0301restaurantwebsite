@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Button from "../components/Button";
-import BenefitCard from "../components/BenefitCard";
-import AnimatedSection from "../components/AnimatedSection";
-import FavoritesSection from "../components/FavoriteSection";
-import ReserveBanner from "../components/ReserveBanner";
+import BenefitCard from "../components/cards/BenefitCard";
+import AnimatedSection from "../components/sections/AnimatedSection";
+import FavoritesSection from "../components/sections/FavoriteSection";
+import ReserveBanner from "../components/sections/ReserveBanner";
 import {
   fadeInUp,
   heroTextVariants,

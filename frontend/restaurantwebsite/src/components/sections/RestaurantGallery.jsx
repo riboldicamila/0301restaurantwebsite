@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { restaurantImages } from "../constants/images";
+import { restaurantImages } from "../../constants/images";
 
 const RestaurantGallery = () => {
   const [ref, inView] = useInView({

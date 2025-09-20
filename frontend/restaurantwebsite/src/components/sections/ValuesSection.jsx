@@ -1,5 +1,5 @@
-import { VALUES_DATA } from "../constants/text";
-import { ValueCard } from "./ValueCard";
+import { VALUES_DATA } from "../../constants/text";
+import {ValueCard} from "../cards/ValueCard";
 
 export const ValuesSection = ({ isVisible }) => (
   <div className={`mb-16 transform transition-all duration-700 ${
