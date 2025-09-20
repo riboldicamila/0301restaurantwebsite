@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 import Button from "../components/Button";
 import BenefitCard from "../components/BenefitCard";
 import AnimatedSection from "../components/AnimatedSection";
+import FavoritesSection from "../components/FavoriteSection";
+import ReserveBanner from "../components/ReserveBanner";
 import {
   fadeInUp,
   heroTextVariants,
   heroItemVariants,
 } from "../utils/animations";
 
-import { GiCookingPot } from "react-icons/gi";
-import { GiKnifeFork } from "react-icons/gi";
+import { GiCookingPot, GiKnifeFork } from "react-icons/gi";
 import { FiClock } from "react-icons/fi";
-import FavoritesSection from "../components/FavoriteSection";
-import ReserveBanner from "../components/ReserveBanner";
+
 
 const Home = () => {
   const navigate = useNavigate();
