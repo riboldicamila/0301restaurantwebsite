@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import AnimatedSection from "./AnimatedSection";
 import { fadeInUp } from "../../utils/animations";
 
-const ReserveBanner = ({ onReserveClick }) => {
+const ReserveBanner = () => {
   return (
     <div className="bg-[#2D3142] text-[#F1FAEE] py-16">
       <div className="container mx-auto px-4 text-center">
@@ -21,9 +22,11 @@ const ReserveBanner = ({ onReserveClick }) => {
             Reserve now and experience the authentic flavors of Thai street food.
           </motion.p>
           <motion.div variants={fadeInUp}>
-            <Button onClick={onReserveClick} arrowButton={true}>
-              RESERVE NOW
-            </Button>
+            <Link to="/reservations">
+              <Button arrowButton={true}>
+                RESERVE NOW
+              </Button>
+            </Link>
           </motion.div>
         </AnimatedSection>
       </div>

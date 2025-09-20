@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import AlertBanner from "../components/AlertBanner";
 
 export default function Reservation() {
   const [formData, setFormData] = useState({
@@ -132,7 +133,9 @@ export default function Reservation() {
         loop
         playsInline
       />
-      <div className={`absolute top-0 left-0 w-full h-full ${shadowClass} z-10 transition-all duration-1000`} />
+      <div
+        className={`absolute top-0 left-0 w-full h-full ${shadowClass} z-10 transition-all duration-1000`}
+      />
       <div className="relative z-20 max-w-6xl mx-auto px-4 py-12 md:py-16">
         <div className="text-center mb-12">
           <motion.h1
@@ -149,18 +152,30 @@ export default function Reservation() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Reserve your table at our authentic Thai street food restaurant and experience the vibrant flavors of Bangkok in a memorable dining experience.
+            Reserve your table at our authentic Thai street food restaurant and
+            experience the vibrant flavors of Bangkok in a memorable dining
+            experience.
           </motion.p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 max-w-3xl mx-auto"
+        >
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="space-y-4">
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Contact Information</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  Contact Information
+                </h2>
 
                 <div>
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-1">Full Name</label>
+                  <label
+                    htmlFor="name"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Full Name
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -172,7 +187,12 @@ export default function Reservation() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-1">Email Address</label>
+                  <label
+                    htmlFor="email"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -184,7 +204,12 @@ export default function Reservation() {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-1">Phone Number</label>
+                  <label
+                    htmlFor="phone"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     id="phone"
@@ -197,10 +222,17 @@ export default function Reservation() {
               </div>
 
               <div className="space-y-4">
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Reservation Details</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  Reservation Details
+                </h2>
 
                 <div>
-                  <label htmlFor="guests" className="block text-gray-700 font-medium mb-1">Number of Guests</label>
+                  <label
+                    htmlFor="guests"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Number of Guests
+                  </label>
                   <select
                     id="guests"
                     name="guests"
@@ -210,14 +242,21 @@ export default function Reservation() {
                   >
                     <option value="">Select</option>
                     {[...Array(8).keys()].map((i) => (
-                      <option key={i + 1} value={i + 1}>{`${i + 1} ${i === 0 ? "Person" : "People"}`}</option>
+                      <option key={i + 1} value={i + 1}>{`${i + 1} ${
+                        i === 0 ? "Person" : "People"
+                      }`}</option>
                     ))}
                     <option value="9+">9+ People (Please call)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="date" className="block text-gray-700 font-medium mb-1">Date</label>
+                  <label
+                    htmlFor="date"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Date
+                  </label>
                   <div className="relative">
                     <input
                       type="text"
@@ -238,7 +277,11 @@ export default function Reservation() {
                           key={date.toISOString()}
                           type="button"
                           onClick={() => handleDateSelect(date)}
-                          className={`px-2 py-1 rounded ${selectedDate?.toDateString() === date.toDateString() ? "bg-red-500 text-white" : "bg-gray-100 hover:bg-gray-200"}`}
+                          className={`px-2 py-1 rounded ${
+                            selectedDate?.toDateString() === date.toDateString()
+                              ? "bg-red-500 text-white"
+                              : "bg-gray-100 hover:bg-gray-200"
+                          }`}
                         >
                           {date.getDate()}
                         </button>
@@ -248,14 +291,23 @@ export default function Reservation() {
                 </div>
 
                 <div>
-                  <label htmlFor="time" className="block text-gray-700 font-medium mb-1">Time</label>
+                  <label
+                    htmlFor="time"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Time
+                  </label>
                   <div className="grid grid-cols-3 gap-2">
                     {timeSlots.map((slot) => (
                       <button
                         key={slot.id}
                         type="button"
                         onClick={() => handleTimeSelect(slot.id)}
-                        className={`px-2 py-1 rounded border ${selectedTime === slot.id ? "bg-red-500 text-white border-red-500" : "bg-white hover:bg-gray-100 border-gray-300"}`}
+                        className={`px-2 py-1 rounded border ${
+                          selectedTime === slot.id
+                            ? "bg-red-500 text-white border-red-500"
+                            : "bg-white hover:bg-gray-100 border-gray-300"
+                        }`}
                       >
                         {slot.label}
                       </button>
@@ -266,7 +318,12 @@ export default function Reservation() {
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-gray-700 font-medium mb-1">Special Requests</label>
+              <label
+                htmlFor="notes"
+                className="block text-gray-700 font-medium mb-1"
+              >
+                Special Requests
+              </label>
               <textarea
                 id="notes"
                 name="notes"
@@ -287,27 +344,17 @@ export default function Reservation() {
           </div>
         </form>
 
-        {showSuccess && (
-          <motion.div
-            className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-          >
-            Reservation submitted successfully!
-          </motion.div>
-        )}
+        <AlertBanner
+          type="success"
+          message="Reservation submitted successfully!"
+          isVisible={showSuccess}
+        />
 
-        {showError && (
-          <motion.div
-            className="fixed bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-          >
-            Please fill in all required fields.
-          </motion.div>
-        )}
+        <AlertBanner
+          type="error"
+          message="Please fill in all required fields."
+          isVisible={showError}
+        />
       </div>
     </div>
   );

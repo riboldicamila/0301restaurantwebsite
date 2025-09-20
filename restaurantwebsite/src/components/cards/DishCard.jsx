@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const DishCard = ({ title, description, rating, imageUrl }) => {
+const DishCard = ({ title, description, rating, price, imageUrl }) => {
   return (
     <motion.div 
       className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 font-trirong"
@@ -19,9 +19,11 @@ const DishCard = ({ title, description, rating, imageUrl }) => {
             transition: { duration: 0.5 }
           }}
         />
-        <div className="absolute top-2 right-2 bg-[#E63946] text-white py-1 px-2 rounded-full text-sm">
-          ★ {rating}
-        </div>
+        {(rating || price) && (
+          <div className="absolute top-2 right-2 bg-[#E63946] text-white py-1 px-2 rounded-full text-sm">
+            {rating ? `★ ${rating}` : `$${price.toFixed(2)}`}
+          </div>
+        )}
       </div>
       <div className="p-4">
         <h3 className="text-xl font-semibold mb-2 text-[#2D3142]">{title}</h3>

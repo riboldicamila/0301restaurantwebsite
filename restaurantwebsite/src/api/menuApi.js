@@ -116,14 +116,11 @@ const mockData = {
 
 export const fetchMenu = async () => {
   try {
-    // Return mockData directly for now
-    return mockData.categories.flatMap((cat) =>
-      cat.items.map((item) => ({
-        ...item,
-        category: cat.name, // add category to each item to match your grouping logic
-      }))
-    );
+    // testing error --> throw Error;
 
+    return mockData;
+
+    // For real API:
     // const response = await axios.get(`${API_BASE_URL}/menu`);
     // return response.data;
   } catch (error) {

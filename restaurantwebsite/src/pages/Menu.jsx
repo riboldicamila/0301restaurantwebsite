@@ -1,11 +1,18 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+
 import ReserveBanner from "../components/sections/ReserveBanner";
+import DishCard from "../components/cards/DishCard";
+import CategoryButton from "../components/CategoryButton";
+import Loader from "../components/Loader";
+import AlertBanner from "../components/AlertBanner";
+
 import { fetchMenu } from "../api/menuApi";
 
-export default function MenuPage() {
+const MenuPage = () => {
   const [menuData, setMenuData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
@@ -13,8 +20,9 @@ export default function MenuPage() {
       try {
         const data = await fetchMenu();
         setMenuData(data);
-      } catch (error) {
-        console.error("Failed to load menu:", error);
+      } catch (err) {
+        console.error("Failed to load menu:", err);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -24,19 +32,13 @@ export default function MenuPage() {
   }, []);
 
   const groupedCategories = useMemo(() => {
-    return menuData.reduce((categories, item) => {
-      const category = categories.find((cat) => cat.name === item.category);
-      if (category) {
-        category.items.push(item);
-      } else {
-        categories.push({
-          name: item.category,
-          id: item.category.toLowerCase().replace(/\s+/g, "-"),
-          items: [item],
-        });
-      }
-      return categories;
-    }, []);
+    return (
+      menuData?.categories?.map((category) => ({
+        id: category.id,
+        name: category.name,
+        items: category.items,
+      })) || []
+    );
   }, [menuData]);
 
   useEffect(() => {
@@ -81,22 +83,12 @@ export default function MenuPage() {
             }}
           >
             {groupedCategories.map((category) => (
-              <motion.button
+              <CategoryButton
                 key={category.id}
+                category={category}
+                isActive={activeCategory === category.id}
                 onClick={() => setActiveCategory(category.id)}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className={`px-6 py-2 mx-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors duration-300 ${
-                  activeCategory === category.id
-                    ? "bg-red-500 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-              >
-                {category.name}
-              </motion.button>
+              />
             ))}
           </motion.div>
         </div>
@@ -105,9 +97,7 @@ export default function MenuPage() {
       {/* Menu Items */}
       <div className="container mx-auto px-4 py-12">
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="text-xl text-gray-600">Loading menu...</div>
-          </div>
+          <Loader text="Loading menu..." />
         ) : (
           groupedCategories.map((category) => (
             <div
@@ -123,44 +113,30 @@ export default function MenuPage() {
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item) => (
-                  <motion.div
-                    key={item._id}
-                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 m-2 rounded">
-                        ${item.price.toFixed(2)}
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">
-                        {item.name}
-                      </h3>
-                      <p className="text-gray-600">{item.description}</p>
-                      {item.allergens && item.allergens.length > 0 && (
-                        <div className="mt-2">
-                          <p className="text-sm text-gray-500">
-                            <span className="font-medium">Allergens: </span>
-                            {item.allergens.join(", ")}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
+                  <DishCard
+                    key={item.id}
+                    title={item.name}
+                    description={item.description}
+                    price={item.price}
+                    imageUrl={item.image}
+                  />
                 ))}
               </div>
             </div>
           ))
         )}
       </div>
+
       <ReserveBanner />
+
+      <AlertBanner
+        type="error"
+        message="Error occurred while receiving data."
+        isVisible={error}
+      />
+      
     </div>
   );
-}
+};
+
+export default MenuPage;

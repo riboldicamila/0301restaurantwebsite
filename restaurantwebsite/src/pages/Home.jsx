@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Button from "../components/Button";
@@ -15,16 +15,11 @@ import {
 import { GiCookingPot, GiKnifeFork } from "react-icons/gi";
 import { FiClock } from "react-icons/fi";
 
-
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleReserveNow = () => {
-    // Not <Link>, so can add future logic, extra validation before click.
-    navigate("/reservations");
-  };
-
   const handleMenuClick = () => {
+    // Not <Link>, so can add future logic, extra discount banner before click.
     navigate("/menu");
   };
 
@@ -66,9 +61,9 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button onClick={handleReserveNow} variant="primary">
-                RESERVE NOW
-              </Button>
+              <Link to="/reservations">
+                <Button variant="primary">RESERVE NOW</Button>
+              </Link>
               <Button variant="outline" onClick={handleMenuClick}>
                 VIEW MENU
               </Button>
@@ -133,7 +128,7 @@ const Home = () => {
         </div>
       </div>
 
-      <ReserveBanner onReserveClick={handleReserveNow} />
+      <ReserveBanner />
     </div>
   );
 };
