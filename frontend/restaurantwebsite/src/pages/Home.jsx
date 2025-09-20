@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -6,7 +5,6 @@ import { useInView } from "react-intersection-observer";
 import Button from "../components/Button";
 import DishCard from "../components/DishCard";
 import BenefitCard from "../components/BenefitCard";
-import Banner from "../components/BannerInfo";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -43,14 +41,9 @@ const AnimatedSection = ({ children, className }) => {
 };
 
 const Home = () => {
-  const [showBanner, setShowBanner] = useState(false);
 
   const handleReserveNow = () => {
     navigate("/reservations");
-  };
-
-  const handleCloseBanner = () => {
-    setShowBanner(false);
   };
 
   const navigate = useNavigate();
@@ -293,7 +286,6 @@ const Home = () => {
           </AnimatedSection>
         </div>
       </div>
-      {showBanner && <Banner onClose={handleCloseBanner} />}
     </div>
   );
 };

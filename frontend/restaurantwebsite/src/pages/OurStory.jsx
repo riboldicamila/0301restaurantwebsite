@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ChevronRight, Star } from "lucide-react";
+import { FaChevronRight, FaStar } from "react-icons/fa";
 import RestaurantGallery from "../components/RestaurantGallery";
 
 export default function OurStory() {
@@ -178,7 +178,7 @@ export default function OurStory() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-slate-800 rounded-lg p-6 hover:bg-slate-700 transition-colors">
               <div className="mb-4 text-red-500">
-                <Star size={48} />
+                <FaStar size={48} />
               </div>
               <h3 className="text-xl font-bold text-red-500 mb-2">
                 Authentic Flavors
@@ -192,7 +192,7 @@ export default function OurStory() {
 
             <div className="bg-slate-800 rounded-lg p-6 hover:bg-slate-700 transition-colors">
               <div className="mb-4 text-red-500">
-                <Star size={48} />
+                <FaStar size={48} />
               </div>
               <h3 className="text-xl font-bold text-red-500 mb-2">
                 Community Connection
@@ -206,7 +206,7 @@ export default function OurStory() {
 
             <div className="bg-slate-800 rounded-lg p-6 hover:bg-slate-700 transition-colors">
               <div className="mb-4 text-red-500">
-                <Star size={48} />
+                <FaStar size={48} />
               </div>
               <h3 className="text-xl font-bold text-red-500 mb-2">
                 Sustainability
@@ -233,7 +233,7 @@ export default function OurStory() {
             className="bg-white text-red-500 font-bold px-6 py-3 rounded flex items-center mx-auto hover:bg-slate-200 transition-colors group"
           >
             RESERVE A TABLE
-            <ChevronRight
+            <FaChevronRight
               size={20}
               className={`ml-2 ${
                 isHovered ? "animate-bounce" : ""
