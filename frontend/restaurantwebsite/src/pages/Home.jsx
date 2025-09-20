@@ -1,71 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 import Button from "../components/Button";
-import DishCard from "../components/DishCard";
 import BenefitCard from "../components/BenefitCard";
+import AnimatedSection from "../components/AnimatedSection";
+import {
+  fadeInUp,
+  heroTextVariants,
+  heroItemVariants,
+} from "../utils/animations";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const AnimatedSection = ({ children, className }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.15,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={staggerContainer}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import { GiCookingPot } from "react-icons/gi";
+import { GiKnifeFork } from "react-icons/gi";
+import { FiClock } from "react-icons/fi";
+import FavoritesSection from "../components/FavoriteSection";
+import ReserveBanner from "../components/ReserveBanner";
 
 const Home = () => {
+  const navigate = useNavigate();
 
   const handleReserveNow = () => {
+    // Not <Link>, so can add future logic, extra validation before click.
     navigate("/reservations");
   };
 
-  const navigate = useNavigate();
-
   const handleMenuClick = () => {
     navigate("/menu");
-  };
-
-  const heroTextVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1.5,
-        staggerChildren: 0.4,
-      },
-    },
-  };
-
-  const heroItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (
@@ -106,7 +66,7 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
               variants={heroItemVariants}
             >
-              <Button onClick={handleReserveNow} variant="primary" >
+              <Button onClick={handleReserveNow} variant="primary">
                 RESERVE NOW
               </Button>
               <Button variant="outline" onClick={handleMenuClick}>
@@ -117,51 +77,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
-        <AnimatedSection>
-          <motion.h2
-            className="text-3xl font-bold text-center mb-12 text-[#2D3142]"
-            variants={fadeInUp}
-          >
-            STREET FOOD FAVORITES
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div variants={fadeInUp}>
-              <DishCard
-                title="Pad Thai"
-                description="Stir-fried rice noodles with eggs, tofu, bean sprouts, and peanuts in a tangy sauce."
-                rating={4.8}
-                imageUrl="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745934034/pexels-photo-5939141_k8hjgx.jpg"
-              />
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <DishCard
-                title="Som Tam (Papaya Salad)"
-                description="Spicy green papaya salad with tomatoes, peanuts, and a zesty lime dressing."
-                rating={4.7}
-                imageUrl="https://res.cloudinary.com/dav7tzdzv/image/upload/v1745934142/pexels-photo-5531299_tvw9mz.jpg"
-              />
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <DishCard
-                title="Mango Sticky Rice"
-                description="Sweet sticky rice topped with fresh mango slices and coconut cream."
-                rating={4.9}
-                imageUrl="https://res.cloudinary.com/dav7tzdzv/image/upload/v1746005093/fresh-ripe-mango-sticky-rice-with-coconut-milk-dark-surface_1150-41941_ht9lxe.jpg"
-              />
-            </motion.div>
-          </div>
-
-          <motion.div className="text-center mt-12" variants={fadeInUp}>
-            <Button variant="secondary" onClick={handleMenuClick} arrowButton={true}>
-              EXPLORE FULL MENU
-            </Button>
-          </motion.div>
-        </AnimatedSection>
-      </div>
+      <FavoritesSection onMenuClick={handleMenuClick} />
 
       <div className="relative bg-[#E5EFE6] h-[600px] overflow-hidden">
         <video
@@ -195,68 +111,21 @@ const Home = () => {
                   title="Bold Flavors"
                   className="bg-[#ffffffc7] rounded-xl p-6 shadow-md backdrop-blur"
                   description="Our dishes capture the perfect balance of sweet, sour, salty, and spicy that Thai street food is famous for."
-                  icon={
-                    <svg
-                      className="w-12 h-12 text-[#E63946] "
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="8"
-                        stroke="#E63946"
-                        strokeWidth="2"
-                        fill="none"
-                      />
-                    </svg>
-                  }
+                  icon={<GiCookingPot className="w-12 h-12 text-[#E63946]" />}
                 />
               </motion.div>
               <motion.div variants={fadeInUp}>
                 <BenefitCard
                   title="Fresh Ingredients"
                   description="We use locally sourced ingredients at peak freshness, just like the street vendors in Thailand."
-                  icon={
-                    <svg
-                      className="w-12 h-12 text-[#E63946]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm6 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
-                      />
-                    </svg>
-                  }
+                  icon={<GiKnifeFork className="w-12 h-12 text-[#E63946]" />}
                 />
               </motion.div>
               <motion.div variants={fadeInUp}>
                 <BenefitCard
                   title="Quick & Satisfying"
                   description="Just like the streets of Bangkok, our dishes are prepared quickly but never compromise on flavor."
-                  icon={
-                    <svg
-                      className="w-12 h-12 text-[#E63946]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  }
+                  icon={<FiClock className="w-12 h-12 text-[#E63946]" />}
                 />
               </motion.div>
             </div>
@@ -264,28 +133,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#2D3142] text-[#F1FAEE] py-16">
-        <div className="container mx-auto px-4 text-center">
-          <AnimatedSection>
-            <motion.h2
-              className="text-3xl font-bold mb-6 text-[#E63946] font-trirong"
-              variants={fadeInUp}
-            >
-              READY FOR A TASTE OF BANGKOK?
-            </motion.h2>
-            <motion.p
-              className="text-lg mb-8 max-w-2xl mx-auto font-trirong"
-              variants={fadeInUp}
-            >
-              Reserve now and experience the authentic
-              flavors of Thai street food.
-            </motion.p>
-            <motion.div variants={fadeInUp}>
-              <Button onClick={handleReserveNow} arrowButton={true}>RESERVE NOW</Button>
-            </motion.div>
-          </AnimatedSection>
-        </div>
-      </div>
+      <ReserveBanner onReserveClick={handleReserveNow} />
     </div>
   );
 };

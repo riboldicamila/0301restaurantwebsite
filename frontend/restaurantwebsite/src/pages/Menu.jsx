@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ReserveBanner from "../components/ReserveBanner";
 
 export default function MenuPage() {
   const [menuCategories, setMenuCategories] = useState([]);
@@ -162,6 +163,7 @@ export default function MenuPage() {
           ))
         )}
       </div>
+      <ReserveBanner />
     </div>
   );
 }
