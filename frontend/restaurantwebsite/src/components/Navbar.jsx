@@ -3,19 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import Button from "./Button";
-import Banner from "../components/BannerInfo";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(false);
+
   const navigate = useNavigate();
 
   const handleReserveNow = () => {
+    // can add future logic, like extra validation before click.
     navigate("/reservations");
-  };
-
-  const handleCloseBanner = () => {
-    setShowBanner(false);
   };
 
   const toggleMenu = () => {
@@ -70,6 +66,7 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               {isMenuOpen ? (
+                // hamburger menu in mobile size
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -122,8 +119,6 @@ const Navbar = () => {
           </div>
         </div>
       )}
-
-      {showBanner && <Banner onClose={handleCloseBanner} />}
     </nav>
   );
 };

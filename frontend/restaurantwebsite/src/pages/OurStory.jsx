@@ -15,7 +15,6 @@ export default function OurStory() {
   const [isHovered, setIsHovered] = useState(false);
 
   const restaurantImages = [
-    // "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946223/pexels-photo-7594058_a4p559.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946363/pexels-photo-4473496_tx05xe.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946384/pexels-photo-6937476_zvwweb.jpg",
     "https://res.cloudinary.com/dav7tzdzv/image/upload/v1745946972/free-photo-of-vibrant-night-scene-in-asian-alley-with-lanterns_brgwkx.jpg",
