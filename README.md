@@ -1,5 +1,22 @@
 # 📱 Website
 
+## ⚡ Installation & Running
+
+```bash
+# Clone the repository
+git clone https://github.com/riboldicamila/0301restaurantwebsite.git
+
+# Navigate into the project folder
+cd 0301restaurantwebsite
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run dev
+
+```
+
 ## 📖 Project Description
 
 This project is a **restaurant-inspired website** focused on building custom components without relying on pre-built UI libraries such as **Material UI** or **Bootstrap**. Instead, the design was crafted with **TailwindCSS**, enabling a fully customized and cohesive visual identity aligned with the restaurant’s aesthetic.  
@@ -53,23 +70,7 @@ The main trade-off is that this setup introduces a **dependency on an internet c
 - **React Icons**: For lightweight and customizable icons.
 - **React Intersection Observer**: To trigger actions when elements enter/leave the viewport.
 
-
-## ⚡ Installation & Running
-
-```bash
-# Clone the repository
-git clone https://github.com/riboldicamila/0301restaurantwebsite.git
-
-# Navigate into the project folder
-cd 0301restaurantwebsite
-
-# Install dependencies
-npm install
-
-# Run in development mode
-npm run dev
-
-```
+# 📱
 
 ## 💭 Deep Dive: Project Ideas & Key Implementations
 
