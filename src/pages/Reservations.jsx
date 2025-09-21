@@ -203,9 +203,12 @@ const Reservations = () => {
             placeholder="Any special requests or dietary restrictions?"
           />
 
-          <Button type="submit" fullWidth variant="primary">
-            Confirm Reservation
-          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="primary"
+            text="Confirm Reservation"
+          />
         </form>
 
         <AlertBanner

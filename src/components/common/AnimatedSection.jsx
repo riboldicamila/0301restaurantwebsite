@@ -4,16 +4,16 @@ import { staggerContainer } from "../../utils/animations";
 
 const AnimatedSection = ({ children, className }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.15,
+    triggerOnce: true, // only first scroll 
+    threshold: 0.15, //percentage of element in viewport
   });
 
   return (
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={staggerContainer}
+      animate={inView ? "visible" : "hidden"} 
+      variants={staggerContainer} //key to having childs 
       className={className}
     >
       {children}

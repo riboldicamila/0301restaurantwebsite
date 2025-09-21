@@ -34,7 +34,7 @@ const Home = () => {
 
           <motion.div
             className="relative z-10 flex flex-col justify-center items-center h-full text-center text-[#F1FAEE] bg-black/60 px-4"
-            initial="hidden"
+            initial="hidden" //only parent prop, its inherited
             animate="visible"
             variants={heroTextVariants}
           >
@@ -56,10 +56,10 @@ const Home = () => {
               variants={heroItemVariants}
             >
               <Link to="/reservations">
-                <Button variant="primary">RESERVE NOW</Button>
+                <Button variant="primary" text="RESERVE NOW" />
               </Link>
               <Link to="/menu">
-                <Button variant="outline">VIEW MENU</Button>
+                <Button variant="outline" text="VIEW MENU" />
               </Link>
             </motion.div>
           </motion.div>

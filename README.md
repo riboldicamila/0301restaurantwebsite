@@ -71,6 +71,8 @@ npm run dev
 
 ```
 
+### 💭 Deep Dive: Project Ideas & Key Implementations
+
 ## 💡 What Could Be Improved
 
 - **Add React Helmet**: Since React is client-side, adding **React Helmet** would allow dynamic meta tags for SEO and better page visibility, which is important for a restaurant-oriented website.  
@@ -84,3 +86,33 @@ npm run dev
 - **Testing with Jest and React Testing Library**: Incorporating **unit and integration tests** would improve reliability. **Jest** also provides **coverage reports**, helping ensure the application remains well-tested as it grows.
 
 - **CSS Improvement**: Creating **brand color variables** (instead of hardcoding colors) will improve **maintainability, consistency, and scalability** across the application’s styles.
+
+
+
+## 💡 Explanation of main animations effects used
+
+- **Gradual Visibility Hook**: The **Use Gradual Visibility Custom Hook** allows components to appear **progressively on mount**. It returns an array of booleans (`isVisible`) indicating whether each component is visible. The `useEffect` runs **once on the initial mount**, and timers update the state over time. Each time the state changes, the hook returns the updated visibility, letting components apply **different CSS classes** based on their visibility. 
+
+- **Motion Library**: The **Motion Library** allows you to create **animations easily in React** by using `motion` components instead of standard HTML tags.  
+
+  - **Motion Tags**: Replace regular HTML elements with `motion` versions (e.g., `motion.div`, `motion.span`).  
+
+  - **Variants**: Motion components accept a `variants` prop, which is an object defining states like `hidden` and `visible`. For each state, you can set properties like `opacity`, `visibility`, and others.  
+
+  - **Transition**: Within each variant, you can define a `transition` object that specifies the **duration, delay, and type of animation**.  
+
+  - **Parent-Child Behavior**: If a motion component is a parent, you should define the `initial` prop to set the starting state. Child components will **inherit the parent’s animation settings**, so they animate consistently.  
+
+  - **Animate Prop**: The `animate` prop tells a motion component **which variant to apply**, controlling the active animation state.  
+
+The Motion Library is designed to make **animations in React simple and declarative**, reducing the complexity of handling manual CSS transitions or keyframes.
+
+- **React Intersection Observer**: **React Intersection Observer** is a React library that lets you track when elements enter the viewport during scrolling.  
+
+  - **Hook Usage**: The library provides a hook that returns a `ref` and an `inView` boolean.  
+    - `ref` is a reference to the component or container you want to observe.  
+    - `inView` is a boolean that indicates whether the element is currently visible in the viewport.  
+
+  - **Integration with Motion**: In our project, we use it together with **motion components** to trigger animations based on whether a component is in the viewport. This allows **smooth, scroll-based animations** in a declarative way.
+
+

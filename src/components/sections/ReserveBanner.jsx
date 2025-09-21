@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import AnimatedSection from "../common/AnimatedSection";
@@ -19,13 +19,12 @@ const ReserveBanner = () => {
             className="text-lg mb-8 max-w-2xl mx-auto font-trirong"
             variants={fadeInUp}
           >
-            Reserve now and experience the authentic flavors of Thai street food.
+            Reserve now and experience the authentic flavors of Thai street
+            food.
           </motion.p>
           <motion.div variants={fadeInUp}>
             <Link to="/reservations">
-              <Button arrowButton={true}>
-                RESERVE NOW
-              </Button>
+              <Button arrowButton={true} text="RESERVE NOW" />
             </Link>
           </motion.div>
         </AnimatedSection>

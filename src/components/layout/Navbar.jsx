@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button onClick={handleReserveNow}>RESERVE NOW</Button>
+          <Button onClick={handleReserveNow} text="RESERVE NOW" />
         </div>
 
         <div className="md:hidden">
@@ -95,9 +95,7 @@ const Navbar = () => {
             >
               RESERVATIONS
             </Link>
-            <Button fullWidth onClick={handleReserveNow}>
-              RESERVE NOW
-            </Button>
+            <Button fullWidth onClick={handleReserveNow} text="RESERVE NOW" />
           </div>
         </div>
       )}

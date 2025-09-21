@@ -24,3 +24,11 @@ export const useGradualVisibility = () => {
 
   return isVisible;
 };
+
+// Hook Return:
+// {
+//   header: boolean,
+//   story: boolean,
+//   founders: boolean,
+//   values: boolean
+// }

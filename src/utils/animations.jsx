@@ -10,7 +10,7 @@ export const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.2, //delay between each child’s start, not the parent.
     },
   },
 };
@@ -21,7 +21,7 @@ export const heroTextVariants = {
     opacity: 1,
     transition: {
       duration: 1.5,
-      staggerChildren: 0.4,
+      staggerChildren: 0.4, //delay between each child’s start, not the parent.
     },
   },
 };

@@ -47,9 +47,11 @@ const FavoritesSection = () => {
 
         <motion.div className="text-center mt-12" variants={fadeInUp}>
           <Link to="/menu">
-            <Button variant="secondary" arrowButton={true}>
-              EXPLORE FULL MENU
-            </Button>
+            <Button
+              variant="secondary"
+              arrowButton={true}
+              text="EXPLORE FULL MENU"
+            />
           </Link>
         </motion.div>
       </AnimatedSection>
