@@ -25,6 +25,15 @@ Additionally, organizing **larger sections styled with Tailwind** presented chal
 
 Another key aspect was maintaining **minimalism in external libraries**. Instead of mixing multiple icon libraries (e.g., Lucide, FontAwesome), the project relied mainly on **React Icons** to cover most use cases. This approach reduced dependencies and improved long-term maintainability, especially when dealing with **future updates or version changes**.  
 
+## 📦 Media Assets
+
+All images and videos used in this project were sourced from **copyright-free libraries** and are hosted on **Cloudinary**.  
+
+**Cloudinary**,  uses **Amazon CloudFront CDN (content delivery network)** to deliver content. This ensures that assets are served from servers **closest to each user**, significantly reducing latency and improving load times. 
+
+This approach was chosen to allow **easy updates and URL changes** without needing to download the assets directly into the project. It also helps manage **large video files**, which would otherwise increase the project size significantly.  
+
+The main trade-off is that this setup introduces a **dependency on an internet connection**, but since this is a web application, it is considered an acceptable compromise.
 
 ## 💭 Features
 
