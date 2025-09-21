@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Button from "../components/ui/Button";
@@ -16,15 +16,9 @@ import { GiCookingPot, GiKnifeFork } from "react-icons/gi";
 import { FiClock } from "react-icons/fi";
 
 const Home = () => {
-  const navigate = useNavigate();
-
-  const handleMenuClick = () => {
-    // Not <Link>, so can add future logic, extra discount banner before click.
-    navigate("/menu");
-  };
-
   return (
     <div className="bg-[#F1FAEE] min-h-screen">
+      {/* Hero Section */}
       <div className="bg-[#2D3142] text-[#F1FAEE] font-trirong ">
         <div className="relative h-[100vh] overflow-hidden">
           <video
@@ -64,16 +58,17 @@ const Home = () => {
               <Link to="/reservations">
                 <Button variant="primary">RESERVE NOW</Button>
               </Link>
-              <Button variant="outline" onClick={handleMenuClick}>
-                VIEW MENU
-              </Button>
+              <Link to="/menu">
+                <Button variant="outline">VIEW MENU</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      <FavoritesSection onMenuClick={handleMenuClick} />
+      <FavoritesSection />
 
+      {/* Beneficts Section */}
       <div className="relative bg-[#E5EFE6] h-[600px] overflow-hidden">
         <video
           autoPlay

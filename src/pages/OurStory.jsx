@@ -1,4 +1,3 @@
-import RestaurantGallery from "../components/sections/RestaurantGallery";
 import FounderCard from "../components/cards/FounderCard";
 import { PageHeader } from "../components/sections/PageHeader";
 import { StorySection } from "../components/sections/StorySection";
@@ -46,8 +45,6 @@ const OurStory = () => {
 
         <MissionSection />
       </div>
-
-      <RestaurantGallery />
     </div>
   );
 };

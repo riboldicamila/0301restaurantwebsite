@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
 import InputField from "../components/ui/InputField";
@@ -9,7 +9,10 @@ import TimePicker from "../components/ui/TimePicker";
 import Button from "../components/ui/Button";
 import AlertBanner from "../components/common/AlertBanner";
 
-import { createReservation } from "../api/reservationService";
+import {
+  createReservation,
+  getAvailableDates,
+} from "../api/reservationService";
 
 import { VIDEO_SRC, MAX_GUESTS } from "../constants/reservations";
 
@@ -33,33 +36,45 @@ const Reservations = () => {
   const [shadowClass, setShadowClass] = useState("bg-black/10");
 
   useEffect(() => {
-    const dates = [];
-    const today = new Date();
-    const endDate = new Date();
-    endDate.setMonth(today.getMonth() + 1);
+    const fetchDates = async () => {
+      const dates = await getAvailableDates();
+      const formattedDates = dates.map((dateStr) => new Date(dateStr));
+      // date picker lib expects date format
+      setAvailableDates(formattedDates);
+    };
 
-    // refactor, api to check available dates
-    for (let d = new Date(today); d <= endDate; d.setDate(d.getDate() + 1)) {
-      if (Math.random() > 0.2) dates.push(new Date(d));
-    }
-
-    setAvailableDates(dates);
-  }, []);
+    fetchDates();
+    // TODO showSucess: refecator when API is ready to a refetch()
+  }, [showSuccess]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShadowClass("bg-black/50"), 2000);
+    const timer = setTimeout(() => setShadowClass("bg-black/60"), 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  }, []);
 
-  const handleTimeSelect = (time) => {
+  const handleTimeSelect = useCallback((time) => {
     setSelectedTime(time);
     setFormData((prev) => ({ ...prev, time }));
-  };
+  }, []);
+
+  const resetForm = useCallback(() => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      guests: "",
+      date: "",
+      time: "",
+      notes: "",
+    });
+    setSelectedDate(null);
+    setSelectedTime(null);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,28 +83,15 @@ const Reservations = () => {
     const isValid = requiredFields.every((field) => formData[field]);
 
     if (!isValid) {
-      // refactor: improve - needs to check all fields
       setShowError(true);
       setTimeout(() => setShowError(false), 5000);
       return;
     }
 
     try {
-      const result = await createReservation(formData);
-      console.log("Reservation created:", result);
-
+      await createReservation(formData);
       setShowSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        guests: "",
-        date: "",
-        time: "",
-        notes: "",
-      });
-      setSelectedDate(null);
-      setSelectedTime(null);
+      resetForm();
       setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting reservation:", error);

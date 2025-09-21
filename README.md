@@ -68,3 +68,19 @@ npm install
 
 # Run in development mode
 npm run dev
+
+```
+
+## 💡 What Could Be Improved
+
+- **Add React Helmet**: Since React is client-side, adding **React Helmet** would allow dynamic meta tags for SEO and better page visibility, which is important for a restaurant-oriented website.  
+
+- **Maintain small, reusable UI components**: Continue building and refining **small, brand-consistent components** to ensure modularity and a cohesive design system as the project grows. It is key also if later on is decided to use other libreries, it is easier to transition to others styles/libreries when everything is modulerized and reusable. As you only change one component (ex button) and impacts in all the places that is being used. 
+
+- **Decide between Axios and TanQuery**: For managing API endpoints, **TanQuery** is particularly useful due to its **caching capabilities and key-based management** of HTTP calls. This becomes crucial if the application scales up, for example, adding many more pages or additional commerce features.  
+
+- **Implement loading spinners for images**: Even though images are served via **Cloudinary**, there is some latency. Adding **loading indicators** improves user experience while media loads.  
+
+- **Testing with Jest and React Testing Library**: Incorporating **unit and integration tests** would improve reliability. **Jest** also provides **coverage reports**, helping ensure the application remains well-tested as it grows.
+
+- **CSS Improvement**: Creating **brand color variables** (instead of hardcoding colors) will improve **maintainability, consistency, and scalability** across the application’s styles.

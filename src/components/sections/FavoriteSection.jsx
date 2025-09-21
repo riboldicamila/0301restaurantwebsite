@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import DishCard from "../cards/DishCard";
 import Button from "../ui/Button";
 import AnimatedSection from "../common/AnimatedSection";
 import { fadeInUp } from "../../utils/animations";
 
-const FavoritesSection = ({ onMenuClick }) => {
+const FavoritesSection = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <AnimatedSection>
@@ -45,9 +46,11 @@ const FavoritesSection = ({ onMenuClick }) => {
         </div>
 
         <motion.div className="text-center mt-12" variants={fadeInUp}>
-          <Button variant="secondary" onClick={onMenuClick} arrowButton={true}>
-            EXPLORE FULL MENU
-          </Button>
+          <Link to="/menu">
+            <Button variant="secondary" arrowButton={true}>
+              EXPLORE FULL MENU
+            </Button>
+          </Link>
         </motion.div>
       </AnimatedSection>
     </div>
