@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Button from "../components/Button";
+import Button from "../components/ui/Button";
 import BenefitCard from "../components/cards/BenefitCard";
-import AnimatedSection from "../components/sections/AnimatedSection";
+import AnimatedSection from "../components/common/AnimatedSection";
 import FavoritesSection from "../components/sections/FavoriteSection";
 import ReserveBanner from "../components/sections/ReserveBanner";
 import {

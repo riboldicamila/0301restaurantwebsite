@@ -7,7 +7,7 @@ import { MissionSection } from "../components/sections/MissionSection";
 
 import { useGradualVisibility } from "../hooks/useGradualVisibility";
 
-import { FOUNDERS } from "../constants/text";
+import { FOUNDERS } from "../constants/our-story";
 
 const OurStory = () => {
   const isVisible = useGradualVisibility();

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"; 
 import { Link } from "react-router-dom";
-import Button from "../Button";
-import AnimatedSection from "./AnimatedSection";
+import Button from "../ui/Button";
+import AnimatedSection from "../common/AnimatedSection";
 import { fadeInUp } from "../../utils/animations";
 
 const ReserveBanner = () => {

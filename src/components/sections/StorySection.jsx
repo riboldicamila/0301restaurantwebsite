@@ -1,4 +1,4 @@
-import { STORY_CONTENT, VIDEO_URL } from "../../constants/text";
+import { STORY_CONTENT, VIDEO_URL } from "../../constants/our-story";
 
 export const StorySection = ({ isVisible }) => (
   <div className={`mb-16 bg-slate-800 rounded-lg overflow-hidden shadow-xl transform transition-all duration-700 ${

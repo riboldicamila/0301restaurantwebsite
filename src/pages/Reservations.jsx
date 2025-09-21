@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import InputField from "../components/InputField";
-import SelectField from "../components/SelectField";
-import TextAreaField from "../components/TextAreaField";
-import DatePicker from "../components/DatePicker";
-import TimePicker from "../components/TimePicker";
-import Button from "../components/Button";
-import AlertBanner from "../components/AlertBanner";
+import InputField from "../components/ui/InputField";
+import SelectField from "../components/ui/SelectField";
+import TextAreaField from "../components/ui/TextAreaField";
+import DatePicker from "../components/ui/DatePicker";
+import TimePicker from "../components/ui/TimePicker";
+import Button from "../components/ui/Button";
+import AlertBanner from "../components/common/AlertBanner";
 
 import { createReservation } from "../api/reservationService";
 
@@ -59,15 +59,6 @@ const Reservations = () => {
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
     setFormData((prev) => ({ ...prev, time }));
-  };
-
-  const handleDateSelect = (date) => {
-    setSelectedDate(date);
-    setFormData((prev) => ({
-      ...prev,
-      date: date.toISOString().split("T")[0],
-    }));
-    setCalendarOpen(false);
   };
 
   const handleSubmit = async (e) => {
@@ -189,7 +180,7 @@ const Reservations = () => {
                 availableDates={availableDates}
                 calendarOpen={calendarOpen}
                 setCalendarOpen={setCalendarOpen}
-                handleDateSelect={handleDateSelect}
+                setSelectedDate={setSelectedDate}
               />
               <TimePicker
                 selectedTime={selectedTime}

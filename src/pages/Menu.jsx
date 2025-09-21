@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 import ReserveBanner from "../components/sections/ReserveBanner";
 import DishCard from "../components/cards/DishCard";
-import CategoryButton from "../components/CategoryButton";
-import Loader from "../components/Loader";
-import AlertBanner from "../components/AlertBanner";
+import CategoryButton from "../components/ui/CategoryButton";
+import Loader from "../components/ui/Loader";
+import AlertBanner from "../components/common/AlertBanner";
 
 import { fetchMenu } from "../api/menuApi";
 

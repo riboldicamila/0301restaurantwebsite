@@ -1,4 +1,4 @@
-import { VALUES_DATA } from "../../constants/text";
+import { VALUES_DATA } from "../../constants/our-story";
 import {ValueCard} from "../cards/ValueCard";
 
 export const ValuesSection = ({ isVisible }) => (

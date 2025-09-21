@@ -1,5 +1,5 @@
 import React from "react";
-import { timeSlots } from "../constants/reservations";
+import { timeSlots } from "../../constants/reservations";
 
 const TimePicker = ({ selectedTime, handleTimeSelect }) => (
   <div>

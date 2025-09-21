@@ -1,5 +1,3 @@
-// OUR STORY PAGE
-
 export const FOUNDERS = [
   {
     id: 1,
