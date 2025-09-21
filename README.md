@@ -71,9 +71,9 @@ npm run dev
 
 ```
 
-### 💭 Deep Dive: Project Ideas & Key Implementations
+## 💭 Deep Dive: Project Ideas & Key Implementations
 
-## 💡 What Could Be Improved
+### 💡 What Could Be Improved
 
 - **Add React Helmet**: Since React is client-side, adding **React Helmet** would allow dynamic meta tags for SEO and better page visibility, which is important for a restaurant-oriented website.  
 
@@ -89,7 +89,7 @@ npm run dev
 
 
 
-## 💡 Explanation of main animations effects used
+### 💡 Explanation of main animations effects used
 
 - **Gradual Visibility Hook**: The **Use Gradual Visibility Custom Hook** allows components to appear **progressively on mount**. It returns an array of booleans (`isVisible`) indicating whether each component is visible. The `useEffect` runs **once on the initial mount**, and timers update the state over time. Each time the state changes, the hook returns the updated visibility, letting components apply **different CSS classes** based on their visibility. 
 
