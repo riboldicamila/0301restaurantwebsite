@@ -18,6 +18,9 @@ export const getAvailableDates = async () => {
       "2025-09-22T00:00:00.000Z",
       "2025-09-23T00:00:00.000Z",
       "2025-09-24T00:00:00.000Z",
+      "2025-09-25T00:00:00.000Z",
+      "2025-09-26T00:00:00.000Z",
+      "2025-09-27T00:00:00.000Z",
     ];
 
     const formattedDates = mockDates.map(dateStr => new Date(dateStr));

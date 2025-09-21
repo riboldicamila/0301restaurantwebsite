@@ -14,7 +14,7 @@ import {
   getAvailableDates,
 } from "../api/reservationService";
 
-import { VIDEO_SRC, MAX_GUESTS } from "../constants/reservations";
+import { VIDEO_SRC } from "../constants/reservations";
 
 const Reservations = () => {
   const [formData, setFormData] = useState({
@@ -60,6 +60,11 @@ const Reservations = () => {
   const handleTimeSelect = useCallback((time) => {
     setSelectedTime(time);
     setFormData((prev) => ({ ...prev, time }));
+  }, []);
+
+  const handleDateSelect = useCallback((date) => {
+    setSelectedDate(date);
+    setFormData((prev) => ({ ...prev, date }));
   }, []);
 
   const resetForm = useCallback(() => {
@@ -175,14 +180,13 @@ const Reservations = () => {
                 name="guests"
                 value={formData.guests}
                 onChange={handleInputChange}
-                maxGuests={MAX_GUESTS}
               />
               <DatePicker
                 selectedDate={selectedDate}
                 availableDates={availableDates}
                 calendarOpen={calendarOpen}
                 setCalendarOpen={setCalendarOpen}
-                setSelectedDate={setSelectedDate}
+                setSelectedDate={handleDateSelect}
               />
               <TimePicker
                 selectedTime={selectedTime}

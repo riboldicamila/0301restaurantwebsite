@@ -1,4 +1,3 @@
-import React from "react";
 import { timeSlots } from "../../constants/reservations";
 
 const TimePicker = ({ selectedTime, handleTimeSelect }) => (
@@ -16,7 +15,7 @@ const TimePicker = ({ selectedTime, handleTimeSelect }) => (
               : "bg-white hover:bg-gray-100 border-gray-300"
           }`}
         >
-          {slot.label}
+          {slot.time}
         </button>
       ))}
     </div>
