@@ -54,8 +54,8 @@ const MenuPage = () => {
         <div className="container mx-auto px-4">
           <motion.h1
             className="text-4xl font-bold text-center mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }} //translateY vertical
+            animate={{ opacity: 1, y: 0 }} //element should end up
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
             OUR MENU
@@ -79,7 +79,7 @@ const MenuPage = () => {
             initial="hidden"
             animate="visible"
             variants={{
-              visible: { transition: { staggerChildren: 0.08 } },
+              visible: { transition: { staggerChildren: 0.10 } }, //inheritance by btn
             }}
           >
             {groupedCategories.map((category) => (
