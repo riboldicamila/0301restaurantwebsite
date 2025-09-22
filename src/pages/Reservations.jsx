@@ -88,6 +88,7 @@ const Reservations = () => {
     const isValid = requiredFields.every((field) => formData[field]);
 
     if (!isValid) {
+      // TODO: custom error as prop in input components
       setShowError(true);
       setTimeout(() => setShowError(false), 5000);
       return;
@@ -97,6 +98,7 @@ const Reservations = () => {
       await createReservation(formData);
       setShowSuccess(true);
       resetForm();
+      // TODO: make AlertBanner work as an stack
       setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting reservation:", error);
